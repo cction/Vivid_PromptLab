@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Plus, Sparkles, Filter } from 'lucide-react';
+import { Search, Plus, Sparkles, Filter, Settings } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { translations } from '../lib/translations';
 import AivaLogo from '../assets/AIVA.svg';
@@ -10,6 +10,7 @@ export function Header({
   searchTerm, 
   setSearchTerm, 
   onAddClick,
+  onManageTags,
   categories,
   selectedCategory,
   setSelectedCategory
@@ -73,6 +74,14 @@ export function Header({
           </div>
 
           <button 
+            onClick={onManageTags}
+            className="p-2.5 rounded-full bg-black/20 text-neutral-400 hover:text-white hover:bg-black/40 transition-all border border-white/5"
+            title="Manage Tags"
+          >
+            <Settings size={18} />
+          </button>
+
+          <button 
             onClick={onAddClick}
             className="group flex items-center gap-2 px-5 py-2.5 bg-white text-black rounded-full font-semibold text-sm hover:bg-neutral-200 transition-all shadow-lg shadow-white/5 active:scale-95"
           >
@@ -101,9 +110,9 @@ export function Header({
           </div>
         </div>
 
-        {/* Categories - Scrollable Tags */}
-        <div className="flex-1 w-full overflow-hidden">
-          <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar mask-gradient-x">
+        {/* Categories - Wrapping Tags */}
+        <div className="flex-1 w-full">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setSelectedCategory('All')}
               className={cn(

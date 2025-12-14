@@ -4,16 +4,19 @@ import { Header } from './components/Header';
 import { PresetCard } from './components/PresetCard';
 import { AddPresetModal } from './components/AddPresetModal';
 import { PresetDetailModal } from './components/PresetDetailModal';
+import { TagManagerModal } from './components/TagManagerModal';
 import { translations } from './lib/translations';
 import './styles/podui.css'; // Ensure PodUI styles are loaded
 
 function App() {
   const [presets, setPresets] = useState([]);
+  const [pinnedTags, setPinnedTags] = useState([]);
   const [lang, setLang] = useState('zh');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [categories, setCategories] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // For Add Modal
+  const [isTagManagerOpen, setIsTagManagerOpen] = useState(false); // For Tag Manager
   const [selectedPreset, setSelectedPreset] = useState(null); // For View Modal
 
   const t = translations[lang].app;
@@ -24,14 +27,19 @@ function App() {
 
   const fetchPresets = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/api/presets');
-      setPresets(res.data);
+      const [presetsRes, settingsRes] = await Promise.all([
+        axios.get('http://localhost:3001/api/presets'),
+        axios.get('http://localhost:3001/api/settings')
+      ]);
+      
+      setPresets(presetsRes.data);
+      setPinnedTags(settingsRes.data.pinnedTags || []);
       
       // Extract unique categories
-      const cats = [...new Set(res.data.flatMap(p => p.categories || []).filter(Boolean))];
+      const cats = [...new Set(presetsRes.data.flatMap(p => p.categories || []).filter(Boolean))];
       setCategories(cats);
     } catch (err) {
-      console.error("Failed to fetch presets:", err);
+      console.error("Failed to fetch data:", err);
     }
   };
 
@@ -41,6 +49,19 @@ function App() {
                           (preset.promptZh?.toLowerCase() || '').includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'All' || (preset.categories && preset.categories.includes(selectedCategory));
     return matchesSearch && matchesCategory;
+  }).sort((a, b) => {
+    // Check if any category is pinned
+    const aPinned = (a.categories || []).some(cat => pinnedTags.includes(cat));
+    const bPinned = (b.categories || []).some(cat => pinnedTags.includes(cat));
+    
+    if (aPinned && !bPinned) return -1;
+    if (!aPinned && bPinned) return 1;
+    
+    // Default sort by creation time (assuming presets are already sorted or we can use ID/timestamp)
+    // Presets from API are usually sorted by new, but let's be safe if needed, 
+    // though the current implementation adds new to top (unshift) so index order is fine.
+    // If we want to strictly keep original order for non-pinned:
+    return 0;
   });
 
   return (
@@ -55,6 +76,7 @@ function App() {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
           onAddClick={() => setIsModalOpen(true)}
+          onManageTags={() => setIsTagManagerOpen(true)}
         />
 
         {/* Grid - Enhanced Layout */}
@@ -103,6 +125,14 @@ function App() {
           onSuccess={fetchPresets}
           existingCategories={categories}
           lang={lang}
+        />
+
+        {/* Tag Manager Modal */}
+        <TagManagerModal
+          isOpen={isTagManagerOpen}
+          onClose={() => setIsTagManagerOpen(false)}
+          lang={lang}
+          onSuccess={fetchPresets}
         />
 
         {/* View Modal */}

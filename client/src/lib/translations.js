@@ -36,6 +36,22 @@ export const translations = {
       save: "Save Preset",
       saving: "Saving...",
       promptLabel: "Prompt",
+    },
+    tagManager: {
+      title: "Tag Manager",
+      searchPlaceholder: "Search tags...",
+      selected: "selected",
+      rename: "Rename",
+      delete: "Delete",
+      merge: "Merge",
+      mergePlaceholder: "New tag name...",
+      confirmDelete: "Are you sure you want to delete the selected tags?",
+      confirmMerge: "Merge selected tags into:",
+      actions: "Actions",
+      usage: "usage",
+      noTags: "No tags found",
+      createTag: "Create Tag",
+      newTagPlaceholder: "Enter new tag name...",
     }
   },
   zh: {
@@ -75,6 +91,22 @@ export const translations = {
       save: "保存预设",
       saving: "保存中...",
       promptLabel: "提示词",
+    },
+    tagManager: {
+      title: "标签管理",
+      searchPlaceholder: "搜索标签...",
+      selected: "项已选",
+      rename: "重命名",
+      delete: "删除",
+      merge: "合并",
+      mergePlaceholder: "新标签名称...",
+      confirmDelete: "确定要删除选中的标签吗？",
+      confirmMerge: "将选中的标签合并为：",
+      actions: "操作",
+      usage: "次引用",
+      noTags: "未找到标签",
+      createTag: "新建标签",
+      newTagPlaceholder: "输入新标签名称...",
     }
   }
 };
