@@ -15,6 +15,7 @@ export const translations = {
       copy: "Copy",
       copied: "Copied",
       langLabel: "English",
+      confirmDelete: "Are you sure you want to delete this preset?",
     },
     modal: {
       title: "Add New Preset",
@@ -36,6 +37,8 @@ export const translations = {
       save: "Save Preset",
       saving: "Saving...",
       promptLabel: "Prompt",
+      edit: "Edit",
+      translating: "Translating...",
     },
     tagManager: {
       title: "Tag Manager",
@@ -70,6 +73,7 @@ export const translations = {
       copy: "复制",
       copied: "已复制",
       langLabel: "中文",
+      confirmDelete: "确定要删除这个提示词吗？",
     },
     modal: {
       title: "添加新预设",
@@ -91,6 +95,8 @@ export const translations = {
       save: "保存预设",
       saving: "保存中...",
       promptLabel: "提示词",
+      edit: "编辑",
+      translating: "翻译中...",
     },
     tagManager: {
       title: "标签管理",

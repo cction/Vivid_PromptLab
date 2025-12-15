@@ -20,7 +20,13 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
 
   const handleDelete = async (e) => {
     e.stopPropagation();
-    if (window.confirm('Are you sure you want to delete this preset?')) {
+    // Use a flag to prevent multiple clicks if needed, but confirm is blocking usually.
+    // The key issue might be hot module reloading not picking up the previous change or browser caching.
+    // Let's add a log to verify the confirm result.
+    const confirmed = window.confirm(t.confirmDelete || 'Are you sure?');
+    console.log('Delete confirmed:', confirmed);
+    
+    if (confirmed) {
       setIsDeleting(true);
       try {
         await axios.delete(`http://localhost:3001/api/presets/${preset.id}`);
@@ -33,9 +39,17 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
     }
   };
 
-  const imageUrl = preset.image 
-    ? (preset.image.startsWith('http') ? preset.image : `http://localhost:3001${preset.image}`) 
-    : null;
+  // Handle both local uploads and external URLs
+  let imageUrl = null;
+  if (preset.image) {
+    if (preset.image.startsWith('http')) {
+      imageUrl = preset.image;
+    } else {
+      // Ensure local paths start with slash if not already
+      const path = preset.image.startsWith('/') ? preset.image : `/${preset.image}`;
+      imageUrl = `http://localhost:3001${path}`;
+    }
+  }
 
   if (isDeleting) return null; // Optimistic UI update
 

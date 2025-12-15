@@ -1,5 +1,1321 @@
 [
   {
+    "id": "1765769886345",
+    "title": "建筑",
+    "promptEn": "Generate a scaled model of the building, shooting with shifted axes, oblique angles, and aerial angles, respectively, and using high-contrast lighting. Overlay the hand-drawn white conceptual design diagram on the generated model and add a Chinese annotation.",
+    "promptZh": "生成一个按比例缩放的建筑模型，分别采用移轴、斜角和航拍角度拍摄，并使用高对比度光照。将手绘的白色概念设计图叠加到生成的模型上，并添加中文注释。",
+    "categories": [],
+    "image": "/uploads/1765769886331-406252213.png",
+    "createdAt": "2025-12-15T03:38:06.345Z"
+  },
+  {
+    "id": "1765763202132cvhtq",
+    "title": "1.根据这张图的用地地形，生成一个艺术中...",
+    "promptEn": "1. According to the land topography of this map, an art center is generated, the aerial view of the real scene, the architectural style imitates the curved buildings of Zaha, the buildings are reasonably arranged, the greenery and landscape are increased, and the outline of the land and the position of the road are unchanged.",
+    "promptZh": "根据这张图的用地地形，生成一个艺术中心，实景鸟瞰图，建筑风格模仿扎哈的曲线建筑，合理排布建筑，增加绿化和景观，保持用地轮廓和道路位置不变",
+    "categories": [
+      "建筑",
+      "建筑方案"
+    ],
+    "image": "/uploads/imported-1765763199291-m2epxq.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021322o79v",
+    "title": "2.根据这张图的用地地形，生成一个现代中...",
+    "promptEn": "According to the land use topography of this map, a modern middle school is generated, with a bird 's-eye view of the renderings, two entrances and exits, reasonable arrangement of buildings, increased greenery and a campus-style landscape, and the outline of the land use and the location of the roads remain unchanged.",
+    "promptZh": "根据这张图的用地地形，生成一个现代中学，鸟瞰效果图，两个出入口，合理排布建筑，增加绿化和适合校园风格的景观，保持用地轮廓和道路位置不变 。",
+    "categories": [
+      "建筑",
+      "建筑方案"
+    ],
+    "image": "/uploads/1765768329390-48050247.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132hnyp8",
+    "title": "3.根据这张图的用地地形，生成一个商业中...",
+    "promptEn": "According to the land topography of this map, a commercial center is generated, the aerial view of the real scene, the architectural style imitates the Foster style, the building is reasonably arranged, the greening and landscape are increased, and the outline of the land and the position of the road are unchanged.",
+    "promptZh": "根据这张图的用地地形，生成一个商业中心，实景鸟瞰图，建筑风格模仿福斯特风格，合理排布建筑，增加绿化和景观，保持用地轮廓和道路位置不变",
+    "categories": [
+      "建筑",
+      "建筑方案"
+    ],
+    "image": "/uploads/1765768369388-871283569.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132mw4h7",
+    "title": "4.根据这张图的用地地形，生成一个商业中...",
+    "promptEn": "According to the land topography of this map, a commercial center is generated, the aerial view of the real scene, the architectural style imitates the Foster style, the building is reasonably arranged, the greening and landscape are increased, and the outline of the land and the position of the road are unchanged.",
+    "promptZh": "根据这张图的用地地形，生成一个商业中心，实景鸟瞰图，建筑风格模仿福斯特风格，合理排布建筑，增加绿化和景观，保持用地轮廓和道路位置不变",
+    "categories": [
+      "建筑",
+      "建筑方案"
+    ],
+    "image": "/uploads/1765768397419-25554938.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132c0b5m",
+    "title": "将图片转换彩色总平面图，补充住宅景观，保...",
+    "promptEn": "Convert the picture to a colorful general floor plan, complement the residential landscape, keep the road and building outline unchanged, white roof, entrance gate, commercial high-rise building in the lower left corner, immediately behind the outdoor parking lot",
+    "promptZh": "将图片转换彩色总平面图，补充住宅景观，保持道路和建筑轮廓不变，白色屋顶，入口大门，左下角是商业高层建筑，背后紧邻室外停车场地",
+    "categories": [
+      "建筑",
+      "建筑方案"
+    ],
+    "image": "/uploads/1765768449551-234890941.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132513eh",
+    "title": "根据图片生成横向建筑设计竞赛展板，需要包...",
+    "promptEn": "",
+    "promptZh": "根据图片生成横向建筑设计竞赛展板，需要包含这张图，设计说明，建筑体块生成分析图，建筑彩色总平图，建筑轴侧分析图，爆炸分析图，建筑剖透视分析图，建筑鸟瞰图，建筑立面图，3张建筑透视图，4组空间节点轴侧效果图，室内空间效果图这些全部内容，高级配色，中文标注",
+    "categories": [
+      "建筑",
+      "建筑展板"
+    ],
+    "image": "/uploads/imported-1765763199492-g09eh7.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021328czgi",
+    "title": "将图生成城市肌理图，有建筑，道路，景观，...",
+    "promptEn": "",
+    "promptZh": "将图生成城市肌理图，有建筑，道路，景观，水系等，并在右侧提取出分别生成的三组肌理图（建筑、景观，道路），建筑使用白色，道路使用灰色，其他使用淡色的莫兰迪配色",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/imported-1765763199503-dhmv1f.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132unrtb",
+    "title": "生成一张具有Sasaki风格的精致建筑轴...",
+    "promptEn": "Generate an exquisite building axis volume measurement map with Sasaki style, with road arrows and Chinese annotation. Under the premise of maintaining the original ratio and spatial organization, strengthen the boundary, pure color volume, shadow relationship and visual hierarchy to make the map more professional and clean.",
+    "promptZh": "生成一张具有Sasaki风格的精致建筑轴测体量图，带有道路箭头，中文标注，在保持原有比例与空间组织不变的前提下，强化边界、纯色体量、阴影关系与视觉层级，使成图更加专业、干净。",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765768824523-943887096.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132tric3",
+    "title": "生成建筑体块生成分析图，轴测图，需要每个...",
+    "promptEn": "Generate building blocks Generate analytical drawings, axis mapping, each step needs to have generated Chinese character symbols annotation instructions, including 6 steps of generation, line manuscript illustration style, Morandi color matching",
+    "promptZh": "生成建筑体块生成分析图，轴测图，需要每个步骤有生成的中文文字符号标注说明，包含6个生成步骤，线稿插画风格，莫兰迪配色",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765768771508-38295590.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132bubti",
+    "title": "图片中的建筑生成一个连续的建筑分析图，展...",
+    "promptEn": "The building in the picture generates a continuous architectural analysis diagram showing how the building has evolved through bulk shaping, including 6 steps, big style, axonometric projection, concise information, matte white model, blurring surrounding buildings, using red arrows to indicate the inference path, highlighted areas, Chinese description, with a clean white background",
+    "promptZh": "图片中的建筑生成一个连续的建筑分析图，展示建筑如何通过体块推形造型演变过程，包含6个步骤，BIG风格，轴测投影，简洁的信息，哑光白色模型，虚化周边环境建筑，使用红色箭头说明推演路径，高亮区域，中文描述，采用干净的白色背景",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765768800873-937531738.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132wvq86",
+    "title": "生成轴测剖切图，保持建筑剖面合理性",
+    "promptEn": "Generate axonometric sectional drawings to maintain the rationality of building profiles",
+    "promptZh": "生成轴测剖切图，保持建筑剖面合理性",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765768868455-841786158.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021328f67n",
+    "title": "根据这张图片的建筑，生成相应的剖面图，保...",
+    "promptEn": "Generate the corresponding profile according to the building in this picture to maintain the rationality of the building profile",
+    "promptZh": "根据这张图片的建筑，生成相应的剖面图，保持建筑剖面合理性",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765768901757-370761738.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132jssss",
+    "title": "将此建筑转换为3D轴测图，AO白模风格，...",
+    "promptEn": "Convert this building to 3D axis mapping, AO white model style, landscape, reasonable analysis, advanced feeling",
+    "promptZh": "将此建筑转换为3D轴测图，AO白模风格，配景，分析合理，高级感",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765768936311-109034178.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132tr68u",
+    "title": "生成一张有功能分析和流线分析的轴测图",
+    "promptEn": "Generate an axonometric map with functional and streamline analysis",
+    "promptZh": "生成一张有功能分析和流线分析的轴测图",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765768968736-624266224.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132p3t1w",
+    "title": "生成图中建筑的爆炸轴测图，保持建筑合理性...",
+    "promptEn": "Generate a map of the explosion axis of the building in the diagram to maintain the rationality of the building, and mark and explain it in Chinese, and express it with different highlight transparent color blocks",
+    "promptZh": "生成图中建筑的爆炸轴测图，保持建筑合理性，并用中文进行标注和说明，并用不同的高亮透明色块表达",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765769020233-262244524.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132vur4c",
+    "title": "空间节点图",
+    "promptEn": "Generate 6 sets of building node spatial axis mapping, illustration style, Chinese annotation",
+    "promptZh": "生成6组建筑节点空间轴测图，插画风格，中文标注",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765769055880-207615923.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021321nktf",
+    "title": "结构节点分析",
+    "promptEn": "Generate building construction structure node analysis diagram, annotated in Chinese",
+    "promptZh": "生成建筑建造结构节点分析图，中文标注",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765769117312-698633492.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132zp01g",
+    "title": "生成一张建筑工程图纸，蓝色线条绘制平面图...",
+    "promptEn": "Generate an architectural engineering drawing, blue line drawing plan, elevation plan, sectional plan",
+    "promptZh": "生成一张建筑工程图纸，蓝色线条绘制平面图，立面图，剖面图",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765769151689-843892560.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132lqt0c",
+    "title": "制作一张关于[悉尼歌剧院]的信息图，将悉...",
+    "promptEn": "Create an infographic about the [Sydney Opera House], overlaying real photos of the Sydney Opera House with technical notes and diagrams in blueprint style. Caption “[Sydney Opera House]” in the hand-painted box in the corner. Add white chalk-style sketches showing key structural data, important dimensions, material usage, internal structural drawings, load flow arrows, cross-sectional drawings, floor plans, and notable architectural or engineering features. Style: Blueprint aesthetics, white line diagrams superimposed on the photo, technical/architectural annotation style, the real environment can be seen after annotation.",
+    "promptZh": "制作一张关于[悉尼歌剧院]的信息图，将悉尼歌剧院的真实照片与蓝图风格的技术注释和图表叠加在图像上。在角落的手绘框中注明标题“[悉尼歌剧院]”。添加白色粉笔风格的草图，展示关键的结构数据、重要尺寸、材料用量、内部结构图、荷载流向箭头、横截面图、平面图以及显著的建筑或工程特征与风格：蓝图美学，照片上叠加白色线条图，技术/建筑注释风格，注释后方可见真实环境。",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765769412678-76385562.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132wlju3",
+    "title": "生成能耗节能轴测分析图",
+    "promptEn": "Generate Energy Consumption Saving Axis Measurement and Analysis Diagram",
+    "promptZh": "生成能耗节能轴测分析图",
+    "categories": [
+      "建筑",
+      "建筑分析图"
+    ],
+    "image": "/uploads/1765769353525-243571770.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132po9ez",
+    "title": "把这张图片变成一个真实的照片（现代风格）...",
+    "promptEn": "",
+    "promptZh": "把这张图片变成一个真实的照片（现代风格）渲染可视化风格的图像。现代建筑，建筑表面真实反射，有局部高光，保留图像中的建筑轮廓不变。提高真实摄影质感，城市广场，少量人群和广场植物，明媚的光线，电影级别的光线",
+    "categories": [
+      "建筑",
+      "建筑渲染"
+    ],
+    "image": "/uploads/imported-1765763200070-nyeoh.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132aak8o",
+    "title": "生成一张竖向包含多个建筑角度的图，包含：...",
+    "promptEn": "",
+    "promptZh": "生成一张竖向包含多个建筑角度的图，包含：原图大图，其他六个（建筑正视图，左转45度图，右转45度图，俯视图，近景特写图，远景图）需要加上中文标注。",
+    "categories": [
+      "建筑",
+      "建筑多角度图"
+    ],
+    "image": "/uploads/imported-1765763200100-4xwnq.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132tehrv",
+    "title": "转成写实平面图，保持建筑轮廓细节不变",
+    "promptEn": "Convert to a realistic floor plan and keep the architectural outline details the same",
+    "promptZh": "转成写实平面图，保持建筑轮廓细节不变",
+    "categories": [
+      "建筑",
+      "鸟瞰转平面、平面转鸟瞰"
+    ],
+    "image": "/uploads/1765769623280-294101937.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132zst7k",
+    "title": "根据这张平面图生成低空规划鸟瞰效果图，能...",
+    "promptEn": "Generate a bird 's-eye view of the low-altitude plan based on this floor plan. You can see the entire building and the surrounding environment. Do not change the shape of the land. Modern architecture, modern façade shape. It is surrounded by urban built environment with realistic texture.",
+    "promptZh": "根据这张平面图生成低空规划鸟瞰效果图，能看到整个建筑的全貌和周边的环境，不要改变用地形状。现代建筑，现代立面造型。周边为城市建筑环境，具有真实感的质感。",
+    "categories": [
+      "建筑",
+      "鸟瞰转平面、平面转鸟瞰"
+    ],
+    "image": "/uploads/1765769666267-232088081.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132w30fo",
+    "title": "图1参考图2的色调，保持图1建筑轮廓和立...",
+    "promptEn": "Fig. 1 With reference to the hue of Fig. 2, keep the architectural outline and elevation style and viewing angle of Fig. 1, generate a rendering, and keep the scale size of Fig. 1 unchanged",
+    "promptZh": "图1参考图2的色调，保持图1建筑轮廓和立面样式、视角，生成效果图，保持图1的比例尺寸不变",
+    "categories": [
+      "建筑",
+      "风格及立面参考"
+    ],
+    "image": "/uploads/1765769713192-632889659.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132x0jsx",
+    "title": "将场景转变为夜景，保持场景内容和比例不变",
+    "promptEn": "",
+    "promptZh": "将场景转变为夜景，保持场景内容和比例不变",
+    "categories": [
+      "建筑",
+      "转天气四季"
+    ],
+    "image": "/uploads/imported-1765763200191-vwo8xi.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021322lzme",
+    "title": "将场景转变为傍晚暮色蓝调，保持场景内容和...",
+    "promptEn": "",
+    "promptZh": "将场景转变为傍晚暮色蓝调，保持场景内容和比例不变",
+    "categories": [
+      "建筑",
+      "转天气四季"
+    ],
+    "image": "/uploads/imported-1765763200200-esqhe.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021327up8e",
+    "title": "将场景转变为薄雾天，雾中有阳光透出，保持...",
+    "promptEn": "",
+    "promptZh": "将场景转变为薄雾天，雾中有阳光透出，保持场景内容和比例不变，电影级胶片摄影画面",
+    "categories": [
+      "建筑",
+      "转天气四季"
+    ],
+    "image": "/uploads/imported-1765763200208-1hrjys.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132cmul5",
+    "title": "将场景转变为雨后阴天，乌云，保持场景内容...",
+    "promptEn": "",
+    "promptZh": "将场景转变为雨后阴天，乌云，保持场景内容和比例不变，电影级摄影画面",
+    "categories": [
+      "建筑",
+      "转天气四季"
+    ],
+    "image": "/uploads/imported-1765763200218-c1st9.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132scjco",
+    "title": "将场景转变为雪天，有雾，保持场景内容和比...",
+    "promptEn": "",
+    "promptZh": "将场景转变为雪天，有雾，保持场景内容和比例不变，电影级胶片摄影画面",
+    "categories": [
+      "建筑",
+      "转天气四季"
+    ],
+    "image": "/uploads/imported-1765763200227-xxg3vc.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132bpcng",
+    "title": "将场景转变为秋季，保持场景内容和比例不变...",
+    "promptEn": "",
+    "promptZh": "将场景转变为秋季，保持场景内容和比例不变，电影级胶片摄影画面",
+    "categories": [
+      "建筑",
+      "转天气四季"
+    ],
+    "image": "/uploads/imported-1765763200238-v56o0h.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021320pi50",
+    "title": "生成一个按比例缩放的建筑模型，分别采用移...",
+    "promptEn": "",
+    "promptZh": "生成一个按比例缩放的建筑模型，分别采用移轴、斜角和航拍角度拍摄，并使用高对比度光照。将手绘的白色概念设计图叠加到生成的模型上，并添加中文注释。",
+    "categories": [
+      "建筑",
+      "建筑模型"
+    ],
+    "image": "/uploads/imported-1765763200313-l7s1vl.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021327cmea",
+    "title": "在红线范围内设计一个自然公园或自然保护区...",
+    "promptEn": "Design a general plan of a natural park or nature reserve within the red line, with meandering paths and some buildings, a lake, a modern distribution square, three landscape nodes, respectively, an observation deck, a lake rest platform, an activity grassland, and a parking lot in the park. The overall layout presents a sense of natural harmony, keeping the outline of the land and the position of the road unchanged, complementing the surrounding city streets, realistic style",
+    "promptZh": "在红线范围内设计一个自然公园或自然保护区总平面图，有蜿蜒的小径和一些建筑，湖，现代式集散广场，三个景观节点，分别为观景台，湖边休息平台，活动草地，园内设有停车场，整体布局呈现出自然和谐的感觉，保持用地轮廓和道路位置不变，补充出周边城市街道，写实风格",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案设计"
+    ],
+    "image": "/uploads/1765769932637-875451675.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021329v6eo",
+    "title": "将图片转换彩色总平面图，补充住宅景观，保...",
+    "promptEn": "Convert the picture to a colorful general floor plan, complement the residential landscape, keep the road and building outline unchanged, white roof, entrance gate, commercial high-rise building in the lower left corner, immediately behind the outdoor parking lot",
+    "promptZh": "将图片转换彩色总平面图，补充住宅景观，保持道路和建筑轮廓不变，白色屋顶，入口大门，左下角是商业高层建筑，背后紧邻室外停车场地",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案设计"
+    ],
+    "image": "/uploads/1765769973309-613444047.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132m8xoq",
+    "title": "将红线内小区绿地改造更新为住宅景观，现代...",
+    "promptEn": "",
+    "promptZh": "将红线内小区绿地改造更新为住宅景观，现代风格，线条灵动，有水景喷泉，丰富的植物设计，休息区平台，凉亭",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案设计"
+    ],
+    "image": "/uploads/imported-1765763200368-8uwuef.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021327cfdw",
+    "title": "保持红线外不变，将红线内改为现代社区公园...",
+    "promptEn": "Keep the red line unchanged, change the red line into a modern community park, the lines are smart, there are children and old people playing inside, simulate the light and shadow effects of outdoor sunlight and tree shadows, and the real material saturation. The image is high-definition and rich in detail, achieving photo-level image quality, and finally removing red lines.",
+    "promptZh": "保持红线外不变，将红线内改为现代社区公园，线条灵动，有小孩老人在里面玩，模拟户外阳光和树影投射的光影效果，真实的材质饱和度。图像为高清且细节丰富，实现照片级画质，最后去除红线。",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案设计"
+    ],
+    "image": "/uploads/1765770048349-599885862.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132vsmsl",
+    "title": "优化近岸的驳岸设计",
+    "promptEn": "Optimize nearshore barge design",
+    "promptZh": "优化近岸的驳岸设计",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案设计"
+    ],
+    "image": "/uploads/1765770084677-68270337.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132ch0hu",
+    "title": "把庭院重新设计，去掉树和树池，把地面改成...",
+    "promptEn": "Redesign the courtyard, remove trees and tree pools, change the ground to a plastic runway and event space, put some stylishly colored rest seats on it, leave the rest of the surrounding content unchanged, and keep the spatial structure and perspective unchanged",
+    "promptZh": "把庭院重新设计，去掉树和树池，把地面改成塑胶跑道和活动场地，上面放置一些时尚色彩的休息座椅，其他周围的内容保持不变，空间结构和视角保持不变",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案设计"
+    ],
+    "image": "/uploads/1765770129386-900396572.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132qx6c9",
+    "title": "结合原方案，将中心的树池改为方形",
+    "promptEn": "In combination with the original scheme, change the central tree pool to square",
+    "promptZh": "结合原方案，将中心的树池改为方形",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770169423-846752260.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021326t5qq",
+    "title": "参考图二，将植物设计迁移到图一中心得树池...",
+    "promptEn": "Referring to Figure 2, relocate the plant design to the tree pool in the center of Figure 1",
+    "promptZh": "参考图二，将植物设计迁移到图一中心得树池中",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770207998-119835089.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132nandw",
+    "title": "维持结构不变，将整个雕塑的造型改为猫",
+    "promptEn": "Maintain the structure and change the shape of the entire sculpture to a cat",
+    "promptZh": "维持结构不变，将整个雕塑的造型改为猫",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770240846-686784909.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132t1ikm",
+    "title": "将这张图片变成一个真实的照片，渲染可视化...",
+    "promptEn": "Turn this image into a real photo, rendering an image in a visual style. Preserve the original material, plant variety, color and detail in the image, and keep the viewing angle unchanged. Real reflection of materials and plants, real plant material feeling, local highlights, improve the texture of real photography, bright light, cinema-level light",
+    "promptZh": "将这张图片变成一个真实的照片，渲染可视化风格的图像。保留图像中的原有材质，植物种类，色彩和细节，拍摄视角不变。材质和植物真实反射，真实植物质感，有局部高光，提高真实摄影质感，明媚的光线，电影级别的光线",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770286974-945510278.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132r3lp7",
+    "title": "这张图是一张公园的花园小径模型截图，以这...",
+    "promptEn": "This picture is a screenshot of the garden trail model of the park. Based on this picture, it is rendered as a realistic render. It is richly and perfectly paired with the shrubbery. The red characters are changed into actual people. Some shrubs and dense trees are added to the background to make the sky more realistic. The overall picture is the atmosphere of the eco-friendly garden.",
+    "promptZh": "这张图是一张公园的花园小径模型截图，以这张图为基础渲染为真实效果图，丰富完善地被和灌木搭配，将红色人物改为实际的人，背景增加一些灌木和茂密的树林，让天空更加真实，整体画面是生态惬意的花园的氛围",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770392993-485058286.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021325x44q",
+    "title": "这是一张公园厕所的效果图，请在保留一部分...",
+    "promptEn": "This is an effect map of the park toilet, please add some ornamental grass to the green area while retaining a part of the lawn, the effect is simple and refreshing, and add some characters in the vicinity",
+    "promptZh": "这是一张公园厕所的效果图，请在保留一部分草坪的同时，在绿地增加一些观赏草，效果简洁清爽，并在近处增加一些人物",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770432874-920355561.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132qh8ll",
+    "title": "将图做成16比9的横向景观设计竞赛展板，...",
+    "promptEn": "Make the diagram into a 16: 9 lateral landscape design competition display board, which needs to include this diagram, design description, project name, location analysis, status analysis, and surrounding environment analysis. Traffic flow analysis, functional zoning analysis, landscape block generation analysis map, landscape color master plan, landscape axial analysis map, plant analysis map, landscape profile map, landscape bird 's-eye view, 6 sets of landscape node axial renderings, all these contents, the text is all in Chinese, and the title is natural park.",
+    "promptZh": "将图做成16比9的横向景观设计竞赛展板，需要包含这张图，设计说明，项目名称，区位分析，现状分析，周边环境分析。交通流线分析，功能分区分析，景观体块生成分析图，景观彩色总平图，景观轴侧分析图，植物分析图，景观剖面图，景观鸟瞰图，6张成组的景观小节点轴侧效果图这些全部内容，文字全部用中文，标题是自然公园。",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770489229-783559261.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132k0flc",
+    "title": "将图生成景观资源分析，水系，绿化，道路，...",
+    "promptEn": "Generate landscape resource analysis, water system, greening, roads, buildings, and extract the four groups of textures (water system, greening, roads, buildings) generated separately with the small map on the right, the buildings are white, the roads are gray, and the others are colored with light Morandi.",
+    "promptZh": "将图生成景观资源分析，水系，绿化，道路，建筑，并在右侧用小图提取出分别生成的四组肌理图（水系，绿化，道路，建筑），建筑使用白色，道路使用灰色，其他使用淡色的莫兰迪配色",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770520364-876265752.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132ab58f",
+    "title": "生成这张图片的植物分析图，包括植物种类，...",
+    "promptEn": "Generate a plant analysis map of this picture, including plant species, plant growth cycle, optimal planting time, color matching, etc. Reasonable analysis, expressed in a colorful hand-painted way, a sense of luxury",
+    "promptZh": "生成这张图片的植物分析图，包括植物种类，植物生长周期，最佳种植时间，色彩搭配等。分析合理 ，用彩色手绘的方式表达，高级感",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770560532-423953259.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132qwed1",
+    "title": "保持画面线条轮廓和植物组团不变，将时间改...",
+    "promptEn": "Keep the outline of the lines and plant clusters unchanged, change the time to spring, the flowers have not yet opened, there are some sprouts on the dead wood, the overall color is warm",
+    "promptZh": "保持画面线条轮廓和植物组团不变，将时间改为春天，花朵尚未开放，枯木上有些许嫩芽，整体为暖色调",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770630143-229765207.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021320utsg",
+    "title": "保持画面线条轮廓和植物组团不变，将时间改...",
+    "promptEn": "",
+    "promptZh": "保持画面线条轮廓和植物组团不变，将时间改为秋天，树叶枯黄掉落，地面有些许落叶，绿色灌木常绿，花朵枯萎，整体为暖色调",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200625-ndxp2h.jpeg",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021324c9ok",
+    "title": "保持画面线条轮廓和植物组团不变，将时间改...",
+    "promptEn": "",
+    "promptZh": "保持画面线条轮廓和植物组团不变，将时间改为冬天，没有花朵，树叶掉落变为枯木，整体变为冷色调，盖了一层薄薄的雪",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200627-4w48b5.jpeg",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "176576320213241sbv",
+    "title": "根据底图生成涨水时的现状图",
+    "promptEn": "",
+    "promptZh": "根据底图生成涨水时的现状图",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200642-juagex.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132khsar",
+    "title": "根据底图生成驳岸分析，Sasaki风格，...",
+    "promptEn": "",
+    "promptZh": "根据底图生成驳岸分析，Sasaki风格，全部文字使用中文。",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200644-tu35ql.jpeg",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132c091s",
+    "title": "生成这张图片的景观分析图，包括人物活动区...",
+    "promptEn": "Generate a landscape analysis map of this picture, including the character activity area, plant type, color matching, etc., to imitate the Sasaki style.",
+    "promptZh": "生成这张图片的景观分析图，包括人物活动区域，植物类型，色彩搭配等，模仿SASAKI风格。",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770690524-571231149.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132hd54q",
+    "title": "根据底图生成功能分析图，文字全部用中文",
+    "promptEn": "",
+    "promptZh": "根据底图生成功能分析图，文字全部用中文",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200674-kkft8.jpeg",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132hqtlu",
+    "title": "根据底图生成材质分析图，并贴出材质贴图，...",
+    "promptEn": "",
+    "promptZh": "根据底图生成材质分析图，并贴出材质贴图，文字全部用中文",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200675-ikpuwe.jpeg",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132e6i23",
+    "title": "根据底图生成爆炸分析图，文字全部用中文",
+    "promptEn": "",
+    "promptZh": "根据底图生成爆炸分析图，文字全部用中文",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200676-of5e6f.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132rtpee",
+    "title": "根据底图生成剖面分析图，文字全部用中文",
+    "promptEn": "",
+    "promptZh": "根据底图生成剖面分析图，文字全部用中文",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200678-qj09fd.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132qdu0d",
+    "title": "保持图1的和视角一致性，参考图2的整体风...",
+    "promptEn": "Maintain the consistency of Figure 1 and the viewing angle, with reference to the overall style and light and shadow effects of Figure 2, adjust Figure 1 to a more expressive and atmospheric photo-level render, high-definition, full of details",
+    "promptZh": "保持图1的和视角一致性，参考图2的整体风格和光影效果，将图1调整为更具表现力和氛围感的照片级的渲染图，高清，充满细节",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770803300-857509956.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132bwf2b",
+    "title": "图1参考图2的风格色调，保持图1画面的轮...",
+    "promptEn": "Fig. 1 Referring to the style hue of Fig. 2, keep the outline and viewing angle of the picture in Fig. 1, and generate the illustration style rendering of Fig. 1, strictly in accordance with the size ratio of Fig. 1",
+    "promptZh": "图1参考图2的风格色调，保持图1画面的轮廓和视角，将图1生成插画风格效果图，严格按照图1的尺寸比例",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770849359-255003658.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132v0b8u",
+    "title": "将底图转化为景观彩色总平面图，高级质感，...",
+    "promptEn": "",
+    "promptZh": "将底图转化为景观彩色总平面图，高级质感，莫兰迪配色",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200719-oxbxlx.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132kja9h",
+    "title": "将这张平面图变成真实渲染风格图片，从顶部...",
+    "promptEn": "",
+    "promptZh": "将这张平面图变成真实渲染风格图片，从顶部俯视，将公园和地面变成写实风格，建筑在地面上留下真实的阴影。背景保留白色。",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200725-artui.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132laqqe",
+    "title": "选择“平面转鸟瞰”-“景观鸟瞰”",
+    "promptEn": "Select \"Flat bird 's-eye view\" - \"Landscape bird 's-eye view\"",
+    "promptZh": "平面转鸟瞰，景观鸟瞰",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765770986236-877374775.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132blv87",
+    "title": "转成写实平面图，保持建筑轮廓细节不变",
+    "promptEn": "Convert to a realistic floor plan and keep the architectural outline details the same",
+    "promptZh": "转成写实平面图，保持建筑轮廓细节不变",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765771027545-832418057.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132bw0ff",
+    "title": "将这张图片变成一个真实的照片，渲染可视化...",
+    "promptEn": "Turn this image into a real photo, rendering an image in a visual style. Preserve the original material, plant variety, color and detail in the image, and keep the viewing angle unchanged. Real night environment, real reflection of materials and plants, real plant texture, soft lighting from existing lamps in the picture, no extra lamps added, real photography texture improved, cinema-level light",
+    "promptZh": "将这张图片变成一个真实的照片，渲染可视化风格的图像。保留图像中的原有材质，植物种类，色彩和细节，拍摄视角不变。真实的夜晚环境，材质和植物真实反射，真实植物质感，图中已有灯具发出柔灯光，不增加多余灯具，提高真实摄影质感，电影级别的光线",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/1765771239043-691735478.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132heuqb",
+    "title": "将这张图片变成一个真实的照片（现代风格）...",
+    "promptEn": "",
+    "promptZh": "将这张图片变成一个真实的照片（现代风格）渲染可视化风格的图像。保留图像中的景观细节和拍摄视角不变。局部高光反射，提高真实摄影质感，少量人群和真实植物，阴天的氛围，高对比度，地面潮湿反射，局部灯光，电影级别的光线",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200808-zz3jtu.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132ctcf1",
+    "title": "将这张图片变成一个真实的照片（现代风格）...",
+    "promptEn": "",
+    "promptZh": "将这张图片变成一个真实的照片（现代风格）渲染可视化风格的图像。保留图像中的景观细节和拍摄视角不变。现代建筑，建筑表面真实反射，有局部高光，提高真实摄影质感，少量人群和真实植物，天空呈现真实的夜空状态，高级感，通透的玻璃投射出局部室内灯光，电影级别的光线",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200817-tdpyla.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132slzhj",
+    "title": "将这张图片变成一个真实的照片（现代风格）...",
+    "promptEn": "",
+    "promptZh": "将这张图片变成一个真实的照片（现代风格）渲染可视化风格的图像。保留图像中的建筑细节和拍摄视角不变。现代建筑，建筑表面真实反射，局部高光反射，提高真实摄影质感，少量人群和真实植物，黎明的光线，日出，电影级别的光线",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200834-9ug6oc.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132gfdov",
+    "title": "选择“模型转换”-“建筑模型”",
+    "promptEn": "Using the nano-banana model, create a 1/7 scale commercialized figurine of the characters in the picture, in a realistic style, in a real environment. The figurine is placed on a computer desk. The figurine has a round transparent acrylic base, with no text on the base. The content on the computer screen is the Zbrush modeling process of this figurine. Next to the computer screen is a BANDAI-style toy packaging box printed with the original artwork.，The packaging features two-dimensional flat illustrations",
+    "promptZh": "QUERY LENGTH LIMIT EXCEEDED. MAX ALLOWED QUERY : 500 CHARS",
+    "categories": [
+      "建筑",
+      "景观",
+      "方案修改"
+    ],
+    "image": "/uploads/imported-1765763200844-7cf4r.jpeg",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132jnv61",
+    "title": "将白模变成现代简约开放式办公空间、轻奢商...",
+    "promptEn": "Turn the white mold into a modern, simple and open office space, a light and luxurious business office area, and a natural urban office environment, and strictly keep the space structure unchanged",
+    "promptZh": "将白模变成现代简约开放式办公空间、轻奢商务办公区、自然系都市办公环境，严格保持空间结构不变",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/1765773131154-69687285.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132sug1x",
+    "title": "保持图一空间结构轮廓和比例不变，参考图2...",
+    "promptEn": "Keep the outline and scale of the space structure in Figure 1 unchanged, and generate a new Chinese-style tea room with reference to the overall style in Figure 2.",
+    "promptZh": "保持图一空间结构轮廓和比例不变，参考图2的整体风格生成新中式茶水间",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/1765773177189-566027648.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021323e55m",
+    "title": "保持图一空间结构轮廓和比例不变，参考图2...",
+    "promptEn": "Keep the outline and scale of the space structure in Figure 1 unchanged, and generate the library reading room with reference to the overall style in Figure 2.",
+    "promptZh": "保持图一空间结构轮廓和比例不变，参考图2的整体风格生成图书馆阅览室",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/1765773200144-981690509.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132r0q8v",
+    "title": "保持图一空间结构轮廓和比例不变，参考图2...",
+    "promptEn": "Keep the outline and scale of the space structure in Figure 1 unchanged, and generate a pet store with reference to the overall style in Figure 2.",
+    "promptZh": "保持图一空间结构轮廓和比例不变，参考图2的整体风格生成宠物店",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/1765773228422-966970238.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132kmfgh",
+    "title": "保持图一空间结构轮廓和比例不变，参考图2...",
+    "promptEn": "Keep the outline and scale of the space structure in Figure 1 unchanged, and generate the children's activity room with reference to the overall style in Figure 2.",
+    "promptZh": "保持图一空间结构轮廓和比例不变，参考图2的整体风格生成儿童活动室",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/1765773252473-641066047.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132e0c2f",
+    "title": "把这张图片变成科技风的展览通道,通道路径...",
+    "promptEn": "Turn this picture into a science and technology exhibition passage, and the passage should be consistent with this picture.",
+    "promptZh": "把这张图片变成科技风的展览通道,通道路径要与这张图片一致。",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/1765773373797-814400455.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132qmvwa",
+    "title": "把这张图片变成摄影展的展览通道,通道路径...",
+    "promptEn": "Turn this picture into an exhibition path for the photography exhibition, and the path should be the same as this picture.",
+    "promptZh": "把这张图片变成摄影展的展览通道,通道路径要与这张图片一致。",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/1765773328790-489383407.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132s4o7v",
+    "title": "把这张图片变成真实设计展图片：聚焦工业设...",
+    "promptEn": "",
+    "promptZh": "把这张图片变成真实设计展图片：聚焦工业设计、家居设计、平面设计等，通道路径要与这张图片一致。",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/imported-1765763200906-pksw3a.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132ylxei",
+    "title": "把这张图片变成建筑与室内设计展真实效果图...",
+    "promptEn": "",
+    "promptZh": "把这张图片变成建筑与室内设计展真实效果图：展示建筑模型、材料、空间设计等，通道路径要与这张图片一致",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/imported-1765763200911-logk4m.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132uz72h",
+    "title": "布置客厅空间，和需要的风格，室内的物品等",
+    "promptEn": "Decorate the living room space, and the style you need, indoor items, etc.",
+    "promptZh": "布置客厅空间，和需要的风格，室内的物品等",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/1765773465844-452403548.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021321junn",
+    "title": "布置室内会客厅空间，黑白极简，高级，简约...",
+    "promptEn": "",
+    "promptZh": "布置室内会客厅空间，黑白极简，高级，简约吊顶，高级灯具，落地灯，有电视和电视墙，组合沙发，原木家具，茶几，艺术摆件，挂画，装饰品，绿植，布置室外庭院，远山",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/imported-1765763200928-wvm2y9.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132o6q3v",
+    "title": "布置室内餐厅空间，现代简约，吊顶，灯具，...",
+    "promptEn": "",
+    "promptZh": "布置室内餐厅空间，现代简约，吊顶，灯具，餐桌，电器，柜子，装饰品，绿植，挂画",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/imported-1765763200957-u2vkt1r.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132u8xj7",
+    "title": "布置室内卧室空间，保持空间结构姐摄影角度...",
+    "promptEn": "",
+    "promptZh": "布置室内卧室空间，保持空间结构姐摄影角度不变，现代简约，吊顶，吊灯，床头柜，床以及床上用品，地毯，窗，挂画，床背景墙，飘窗，摆件",
+    "categories": [
+      "建筑",
+      "室内",
+      "白模出图"
+    ],
+    "image": "/uploads/imported-1765763200968-2waohl.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132m505d",
+    "title": "将这张图变成3D渲染风格，保持空间结构和...",
+    "promptEn": "",
+    "promptZh": "将这张图变成3D渲染风格，保持空间结构和家具位置不变。客厅和餐厅采用灰色瓷砖，卧室采用浅色木地板。整体和谐而现代。家具的配色是现代的浅色调。厨房设有大理石台面，散发出奢华感，增强了投影和摄影的感觉。",
+    "categories": [
+      "建筑",
+      "室内",
+      "户型上色"
+    ],
+    "image": "/uploads/imported-1765763200972-p7dz8.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132psxkn",
+    "title": "保持图一空间结构和家具位置不变，参考图2...",
+    "promptEn": "",
+    "promptZh": "保持图一空间结构和家具位置不变，参考图2的整体风格生成户型彩平图",
+    "categories": [
+      "建筑",
+      "室内",
+      "户型上色"
+    ],
+    "image": "/uploads/imported-1765763200988-kxx2re.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132ms60k",
+    "title": "将这张图变成2D渲染风格，严格保持空间结...",
+    "promptEn": "",
+    "promptZh": "将这张图变成2D渲染风格，严格保持空间结构、家具位置和图片尺寸不变，现代简约风格。客厅餐厅铺中灰色瓷砖，卧室铺浅色木地板。厨房带白色大理石台面，橱柜为哑光浅灰。家具为现代浅色调，包括燕麦色沙发、浅木色茶几和雾霾蓝餐椅。整体和谐、明亮、有质感。家具在地面上留下真实的阴影。输出4K超清画质",
+    "categories": [
+      "建筑",
+      "室内",
+      "户型上色"
+    ],
+    "image": "/uploads/imported-1765763200997-logggf.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132b6qz6",
+    "title": "将这张平面图变成真实渲染风格图片，从顶部...",
+    "promptEn": "",
+    "promptZh": "将这张平面图变成真实渲染风格图片，从顶部俯视房屋，将家具和地面变成写实风格，家具在地面上留下真实的阴影。背景保留白色。",
+    "categories": [
+      "建筑",
+      "室内",
+      "户型上色"
+    ],
+    "image": "/uploads/imported-1765763201001-92s0fh.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021328q4rc",
+    "title": "将这张平面图变成彩色铅笔手绘，保持空间结...",
+    "promptEn": "",
+    "promptZh": "将这张平面图变成彩色铅笔手绘，保持空间结构和家具位置不变。客厅和餐厅采用浅灰色瓷砖，卧室采用浅色木地板。整体和谐而现代。家具的配色是现代的浅色调。厨房设有灰色大理石台面，散发出奢华感，增强了投影和摄影的感觉。4K画质",
+    "categories": [
+      "建筑",
+      "室内",
+      "户型上色"
+    ],
+    "image": "/uploads/imported-1765763201007-yob9ygx.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "176576320213235ylu",
+    "title": "将这张平面图变成彩色3D室内设计风格，保...",
+    "promptEn": "",
+    "promptZh": "将这张平面图变成彩色3D室内设计风格，保持空间结构和家具位置不变。地板：客厅等区域采用浅木色，营造自然温馨的氛围。家具以白色为主，配以少量浅蓝色（如地毯）、深棕色（如架子）等辅助色，并点缀明亮的小物件（如橙色的凳子），增添活泼感。绿色植物：绿色植物作为一种自然的配色方案，丰富了视觉层次，使空间更有活力。",
+    "categories": [
+      "建筑",
+      "室内",
+      "户型上色"
+    ],
+    "image": "/uploads/imported-1765763201011-obj45p.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132qa0ax",
+    "title": "绘制一幅展示室内的3D立体剖面设计图，这...",
+    "promptEn": "",
+    "promptZh": "绘制一幅展示室内的3D立体剖面设计图，这是室内户型，以高度还原的方式精细呈现其家具布置，每个部分的结构拆解并分析，呈现出清晰、整洁的解析示意图。4K画质",
+    "categories": [
+      "建筑",
+      "室内",
+      "户型上色"
+    ],
+    "image": "/uploads/imported-1765763201014-l4c1tk.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021327c3aj",
+    "title": "“参考室内文字功能标注，合理布置家具，保...",
+    "promptEn": "",
+    "promptZh": "“参考室内文字功能标注，合理布置家具，保持墙体结构不变，最后去除掉文字”，",
+    "categories": [
+      "建筑",
+      "室内",
+      "户型上色"
+    ],
+    "image": "/uploads/imported-1765763201034-0a79gh.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132uf8kl",
+    "title": "将这张图片变成一个真实的照片。保留图像中...",
+    "promptEn": "",
+    "promptZh": "将这张图片变成一个真实的照片。保留图像中的室内细节和拍摄视角不变。还原材质细节，现代室内空间设计，材质表面真实反射，真实室内质感，散射光线，柔和，电影级别的光线，空间明亮，",
+    "categories": [
+      "建筑",
+      "室内",
+      "AI模型渲染"
+    ],
+    "image": "/uploads/imported-1765763201368-5fhmma.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "176576320213291mwb",
+    "title": "将这张图片变成一个真实的照片。保留图像中...",
+    "promptEn": "",
+    "promptZh": "将这张图片变成一个真实的照片。保留图像中的室内细节和拍摄视角不变。还原材质细节，现代室内空间设计，材质表面真实反射，真实室内质感，散射光线，柔和，电影级别的光线，空间明亮（以下描述词都一样）",
+    "categories": [
+      "建筑",
+      "室内",
+      "AI模型渲染"
+    ],
+    "image": "/uploads/imported-1765763201412-c6zanm.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132oni94",
+    "title": "根据图片生成室内家具分析图",
+    "promptEn": "",
+    "promptZh": "根据图片生成室内家具分析图",
+    "categories": [
+      "建筑",
+      "室内",
+      "分析图"
+    ],
+    "image": "/uploads/imported-1765763201854-8v3f6.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132ldowr",
+    "title": "根据这个室内空间，设计绘制一幅展示室内家...",
+    "promptEn": "",
+    "promptZh": "根据这个室内空间，设计绘制一幅展示室内家具和空间设计的3D立体剖面设计图，以轴测角度的爆炸图展示，以高度还原的方式精细呈现其内部结构。每个零部件被拆解并有序排列，各部分均配有清晰英文标注，注明结构名称与功能说明，整体布局兼具专业性与视觉逻辑性，呈现出清晰、整洁且极具科技感的解析示意图。白色背景",
+    "categories": [
+      "建筑",
+      "室内",
+      "分析图"
+    ],
+    "image": "/uploads/imported-1765763201859-q3b1tg.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132q5g7u",
+    "title": "根据这张室内效果图，以3D立体轴测角度的...",
+    "promptEn": "",
+    "promptZh": "根据这张室内效果图，以3D立体轴测角度的爆炸图展示,提取其中装饰和家具的材质，，以高度还原的方式精细呈现其材质纹理。每个材质的纹理缩略图在右侧，各部分均配有清晰中文标注，注明结构名称与功能说明，整体布局兼具专业性与视觉逻辑性，呈现出清晰、整洁且极具科技感的解析示意图。白色背景，4K画质",
+    "categories": [
+      "建筑",
+      "室内",
+      "分析图"
+    ],
+    "image": "/uploads/imported-1765763201866-1zsnee.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "176576320213247g3m",
+    "title": "根据图片生成现代轻奢风格的家居搭配展示，...",
+    "promptEn": "",
+    "promptZh": "根据图片生成现代轻奢风格的家居搭配展示，图分为上下两部分，上半部分：直接展示这张图，下半部分：是该风格的家具单品列表，清晰标注了每件家具的名称，同时给出了配色参考",
+    "categories": [
+      "建筑",
+      "室内",
+      "分析图"
+    ],
+    "image": "/uploads/imported-1765763201879-xmibed.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132r3lqc",
+    "title": "将图做成竖向室内设计竞赛展板，包含这张图...",
+    "promptEn": "",
+    "promptZh": "将图做成竖向室内设计竞赛展板，包含这张图，简约风格，左文右图，统一色调，含项目名称 + 设计主题 + 设计师信息，涵盖流线 / 功能 / 爆炸 / 材质 / 手绘 / 家具分析图，原始 + 改造平面图、天花图、地面铺装图、节点剖面图，全景 + 卧室 + 卫生间 + 厨房 + 节点放大效果图，300 字设计说明，3-4 个核心亮点 + 可持续设计，同色系线条，图文简洁呼应，文字全部用中文，输出4K超清画质",
+    "categories": [
+      "建筑",
+      "室内",
+      "展板设计"
+    ],
+    "image": "/uploads/imported-1765763201911-wlc39k.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132y7ur9",
+    "title": "将图片变成现代高级极简风客厅，保持原始空...",
+    "promptEn": "",
+    "promptZh": "将图片变成现代高级极简风客厅，保持原始空间轮廓和比例不变，矩形客厅，视角不变，整体色调以黑白灰为主，搭配少量原木色点缀。左侧是电视背景墙，中间区域摆放着沙发，搭配茶几。沙发旁是单人椅，地面铺有大地毯。右侧是开放式的办公区域，背景是大面积的落地窗，空间明亮，2K画质",
+    "categories": [
+      "建筑",
+      "室内",
+      "毛坯改造."
+    ],
+    "image": "/uploads/imported-1765763201951-yl3vjc.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132rtah0",
+    "title": "将图片变成奶油风客厅，保持原始空间轮廓和...",
+    "promptEn": "",
+    "promptZh": "将图片变成奶油风客厅，保持原始空间轮廓和比例不变，矩形客厅，视角不变，左侧是电视背景墙，中间区域摆放着沙发，搭配茶几。沙发旁是单人椅，地面铺有大地毯。右侧是开放式的办公区域，背景是大面积的落地窗，空间明亮，2K画质",
+    "categories": [
+      "建筑",
+      "室内",
+      "毛坯改造."
+    ],
+    "image": "/uploads/imported-1765763201953-am1tko.jpeg",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "176576320213242v5p",
+    "title": "将效果图中沙发材质换成黑色皮质，其余保持...",
+    "promptEn": "",
+    "promptZh": "将效果图中沙发材质换成黑色皮质，其余保持完全不变",
+    "categories": [
+      "建筑",
+      "室内",
+      "家具材质替换."
+    ],
+    "image": "/uploads/imported-1765763202020-zbxy3b.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132zje8r",
+    "title": "将效果图中地板材质换成灰色大理石，其余保...",
+    "promptEn": "",
+    "promptZh": "将效果图中地板材质换成灰色大理石，其余保持完全不变",
+    "categories": [
+      "建筑",
+      "室内",
+      "家具材质替换."
+    ],
+    "image": "/uploads/imported-1765763202027-f9m8ec.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "17657632021321da5m",
+    "title": "将效果图中沙发背景墙和吊顶的木材全部换成...",
+    "promptEn": "",
+    "promptZh": "将效果图中沙发背景墙和吊顶的木材全部换成黑色木材，其余保持完全不变",
+    "categories": [
+      "建筑",
+      "室内",
+      "家具材质替换."
+    ],
+    "image": "/uploads/imported-1765763202034-5sj52.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132adqp9",
+    "title": "将图片转换为夜景，室外是晚上9点的天空，...",
+    "promptEn": "",
+    "promptZh": "将图片转换为夜景，室外是晚上9点的天空，深夜，灯具发出暖光",
+    "categories": [
+      "建筑",
+      "室内",
+      "室内照明."
+    ],
+    "image": "/uploads/imported-1765763202102-d1ssj.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
+    "id": "1765763202132hc73u",
+    "title": "将图片转换为夜景，室外是晚上9点的天空，...",
+    "promptEn": "",
+    "promptZh": "将图片转换为夜景，室外是晚上9点的天空，深夜，灯具发出冷光",
+    "categories": [
+      "建筑",
+      "室内",
+      "室内照明."
+    ],
+    "image": "/uploads/imported-1765763202108-ex1j97.png",
+    "createdAt": "2025-12-15T01:46:42.132Z"
+  },
+  {
     "id": "1765689662667k4ta8ac8e",
     "title": "Wide quote card with portrait and Chinese/English customization",
     "promptEn": "A wide quote card featuring a famous person, with a brown background and a light-gold serif font for the quote: “{argument name=\"famous_quote\" default=\"Stay Hungry, Stay Foolish\"}” and smaller text: “—{argument name=\"author\" default=\"Steve Jobs\"}.” There is a large, subtle quotation mark before the text. The portrait of the person is on the left, the text on the right. The text occupies two-thirds of the image and the portrait one-third, with a slight gradient transition effect on the portrait.",
@@ -584,17 +1900,6 @@
     "createdAt": "2025-12-14T05:21:02.668Z"
   },
   {
-    "id": "1765689662668naimky7jx",
-    "title": "Chaotic Maximalist Anime Poster Prompt (100 Girls)",
-    "promptEn": "[{argument name=\"number and clothing\" default=\"100 girls with high school uniform\"}]\nChaotic and anime illustration poster design featuring the subject.\nTheme: Visual overload, maximalism, and disordered composition.\nInterpret the subject into a fragmented explosion of related concepts and abstract shapes. Randomly redraw input subject and chaotically arrange elements similar to the input subject, creating a sense of visual noise and repetition.\nStyle: Mixed media collage, glitch art, acid graphics, random scattered objects.\nNo negative space, fill every corner with details. High saturation, clashing colors, psychedelic atmosphere.Chaotic visual layout.",
-    "promptZh": "",
-    "categories": [
-      "Nano Banana"
-    ],
-    "image": "https://cms-assets.youmind.com/media/1765509827217_k0d0n5_G70MHgYaUAATTxF.jpg",
-    "createdAt": "2025-12-14T05:21:02.668Z"
-  },
-  {
     "id": "1765689662668dbdhzzc2o",
     "title": "Dramatic High-Fashion Portrait with Flower JSON",
     "promptEn": "{\n  \"prompt\": \"Portrait of , dramatic and stylized, half-body shot of an uploaded image. She is posed with an intense expression, mouth open, and looking directly at the viewer through a large, ornate white flower held up to her right eye. She has cornrow braids styled into a slick, elegant bob. Her makeup is bold, featuring a bright red lip, sharp eyebrows, and prominent green/yellow eyeliner. She is wearing a simple white tank top paired with heavy, layered gold and pearl jewelry, including large chain necklaces, a multi-strand pearl necklace, a thick black choker, and numerous gold bracelets on her right wrist. The lighting is bright and high-key, creating strong highlights on her skin (especially her shoulder/chest, which looks slightly wet or oiled) and jewelry. The background is pure white or very light, emphasizing the subject. The overall aesthetic is high-fashion, glamorous, and slightly edgy, reminiscent of magazine editorials or 90s/early 2000s R&B album art.\",\n  \"style\": [\n    \"High Fashion Editorial\",\n    \"Glamorous\",\n    \"Bold\",\n    \"Hyper-realistic Photo\",\n    \"Studio Lighting\",\n    \"High Contrast\"\n  ],\n  \"details\": {\n    \"subject\": \"{argument name=\"subject name\" default=\"Kiana Ledé, singer/actress\"}\",\n    \"pose\": \"Hand holding a large white flower ({argument name=\"flower type\" default=\"camellia-like\"}) over the right eye, mouth slightly open in an expression of intensity or shout/singing\",\n    \"hair\": \"Intricate cornrow braids pulled back into a sleek, dark bob cut\",\n    \"makeup\": \"Bright red lipstick, sharp and bold eyeliner (green/yellow), defined eyebrows\",\n    \"wardrobe\": \"White tank top, layered gold and pearl necklaces, thick black choker, stacked gold bracelets\",\n    \"lighting\": \"Bright, high-key studio lighting; strong catchlights and highlights on skin and jewelry\",\n    \"texture\": \"Oiled or glowing skin, high-shine jewelry\"\n  },\n  \"mood\": \"Confident, Intense, Seductive, Dramatic\",\n  \"camera\": {\n    \"type\": \"Digital SLR\",\n    \"lens\": \"85mm or 105mm (close-up portrait lens)\",\n    \"film_stock\": \"N/A (Digital, high-resolution)\",\n    \"shutter_speed\": \"Fast\"\n  },\n  \"artist_influences\": [\n    \"Steven Klein\",\n    \"David LaChapelle\",\n    \"Fashion Photography\"\n  ]\n}",
@@ -870,17 +2175,6 @@
     "createdAt": "2025-12-14T05:21:02.668Z"
   },
   {
-    "id": "1765689662668izxmu59or",
-    "title": "OOTD Magazine Fashion Collage Prompt (JSON/YAML)",
-    "promptEn": "{\n  \"target\": \"NanoBanana\",\n  \"role_task\": \"Create a professional OOTD magazine-style fashion collage\",\n  \"layout\": {\n    \"left\": {\n      \"width_ratio\": 0.60,\n      \"preserve\": {\n        \"face\": true,\n        \"hairstyle\": true,\n        \"outfit\": true\n      },\n      \"photo_style\": \"clean, bright, magazine-quality\",\n      \"pose\": \"cute, amusing, slightly quirky, realistic atmosphere\"\n    },\n    \"right\": {\n      \"width_ratio\": 0.40,\n      \"background\": \"white\",\n      \"product_grid\": {\n        \"quantity\": \"[quantity]\",\n        \"arrangement\": \"vertical\",\n        \"final_module\": \"underwear_estimated_from_image\",\n        \"module_fields\": [\n          \"product_image_cutout_white_bg\",\n          \"product_name\",\n          \"price_yen\"\n        ]\n      }\n    }\n  },\n  \"example_products\": [\n    {\"id\":1, \"name\":\"{argument name=\"Product 1 Name\" default=\"[Product 1]\"}\", \"price\":\"¥{argument name=\"Product 1 Price\" default=\"[price]\"}\", \"image\":\"[path_or_url_or_placeholder]\"},\n    {\"id\":2, \"name\":\"{argument name=\"Product 2 Name\" default=\"[Product 2]\"}\", \"price\":\"¥{argument name=\"Product 2 Price\" default=\"[price]\"}\", \"image\":\"[path_or_url_or_placeholder]\"},\n    {\"id\":3, \"name\":\"{argument name=\"Product 3 Name\" default=\"[Product 3]\"}\", \"price\":\"¥{argument name=\"Product 3 Price\" default=\"[price]\"}\", \"image\":\"[path_or_url_or_placeholder]\"},\n    {\"id\":4, \"name\":\"{argument name=\"Product 4 Name\" default=\"[Product 4]\"}\", \"price\":\"¥{argument name=\"Product 4 Price\" default=\"[price]\"}\", \"image\":\"[path_or_url_or_placeholder]\"},\n    {\"id\":5, \"name\":\"{argument name=\"Product 5 Name\" default=\"[Product 5]\"}\", \"price\":\"¥{argument name=\"Product 5 Price\" default=\"[price]\"}\", \"image\":\"[path_or_url_or_placeholder]\"},\n    {\"id\":6, \"name\":\"{argument name=\"Product 6 Name\" default=\"[Product 6] (final underwear)\"}\", \"price\":\"¥{argument name=\"Product 6 Price\" default=\"[price]\"}\", \"image\":\"[path_or_url_or_placeholder]\"}\n  ],\n  \"typography\": {\n    \"font_family\": \"modern_sans_serif\",\n    \"product_name_weight\": \"medium\",\n    \"price_weight\": \"bold\"\n  },\n  \"style\": {\n    \"aesthetic\": \"bright, fresh, professional, Instagram fashion-blogger\",\n    \"layout\": \"clean with generous white space\",\n    \"color_palette\": [\"natural_tones\", \"white\", \"soft_gray\"],\n    \"photo_quality\": \"professional_ecommerce_photography\"\n  },\n  \"output_requirements\": {\n    \"file_format\": \"PNG or JPG at editorial resolution\",\n    \"left_image_handling\": \"preserve original pixels for face/hair/outfit (no warp)\",\n    \"right_images_handling\": \"clip to white background, consistent lighting and scale\",\n    \"notes\": \"final module must reflect underwear inferred from uploaded image\"\n  }\n}",
-    "promptZh": "",
-    "categories": [
-      "Nano Banana"
-    ],
-    "image": "https://cms-assets.youmind.com/media/1765509814466_vc6zwh_G7ztZR2aoAABXkm.jpg",
-    "createdAt": "2025-12-14T05:21:02.668Z"
-  },
-  {
     "id": "17656896626684yd0i7kag",
     "title": "Remake Image Prompt",
     "promptEn": "- Remake this image 🤯",
@@ -936,17 +2230,6 @@
     "createdAt": "2025-12-14T05:21:02.668Z"
   },
   {
-    "id": "17656896626685uddrpazn",
-    "title": "Hyper-realistic IG Baddie Bathroom Mirror Selfie (Flash)",
-    "promptEn": "{\n  \"meta\": {\n    \"title\": \"Hyper-realistic 8K Bathroom Mirror Counter Knee-Up IG Baddie Portrait (Ultimate Version)\",\n    \"created_at\": \"2024-05-22T19:40:00Z\",\n    \"tags\": [\n      \"portrait\",\n      \"mirror_selfie\",\n      \"flash\",\n      \"thirst_trap\",\n      \"ig_baddie\",\n      \"bathroom\",\n      \"counter_perch\",\n      \"knee_up\",\n      \"phone_cam\"\n    ]\n  },\n  \"prompt_data\": {\n    \"full_string\": \"Hyper-realistic 8K flash-on **IG baddie bathroom counter knee-up mirror selfie** — preserve the woman's facial identity. Scene: tight bathroom at night with overhead lights off so the **phone flash** dominates. Sink counter, chrome faucet, and tile backsplash explode with bright highlights from the flash.\\n\\nPose: she is perched on the bathroom counter but with **one knee raised up on the counter**, foot planted near the edge of the sink. The other leg hangs slightly off the counter or presses into the cabinetry. Torso angled 3/4, shoulders back, chest forward, one hand holding the phone, the other resting on her raised knee or lightly teasing the hip strap. Flash flare partially blows out the upper chest or shoulder for dramatic IG energy.\\n\\nExpression: confident IG-baddie stare or soft pout with innocent-but-nasty energy, lashes catching the flash.\\n\\nOutfit (choose C or D):\\n(C) Low-rise micro set with low-cut crop top + bra edge visible; ultra low-rise micro shorts with thin 0.25-inch straps pulled high over the hips, straps accentuated by the raised leg position.\\n(D) Deep-V bodysuit with plunging neckline, high-cut sides, subtle 0.25-inch hip trim; fully covered and opaque, neckline narrow but stable, no slips.\\n\\nFabric thin/athletic and slightly shiny so the flash creates bright highlights along the chest, hips, raised leg, and counter edge. Makeup: natural flash-perfect — soft matte skin, subtle contour, minimal highlighter, soft liner/mascara only, glossy lined lips. Hair messy pony / loose waves / sleek straight.\\n\\nBathroom: background mostly swallowed by darkness except flash-lit tiles, faucet glints, sink, mirror edges, and small countertop clutter. Mirror shows dust, water spots, fingerprints catching flare.\\n\\nComposition: 4:5 vertical, subject framed in the bathroom mirror, raised knee dominant in the lower half, deep-V or low-rise straps highlighted, phone flash flare blocking part of the face or clavicle. --ar 4:5 --style raw --v 6.0\",\n    \"components\": {\n      \"style\": \"Hyper-realistic 8K bathroom mirror selfie with raised-knee counter pose, harsh flash, deep shadows, and ultimate IG baddie body angles\",\n      \"subject\": {\n        \"reference_instruction\": \"preserve the woman's facial identity from the reference\",\n        \"pose\": \"perched on the bathroom counter with **one knee raised up** toward the mirror, foot on the counter edge near the sink. Other leg hanging or braced. Torso angled 3/4, shoulders back, one hand holding the phone, the othe",
-    "promptZh": "",
-    "categories": [
-      "Nano Banana"
-    ],
-    "image": "https://cms-assets.youmind.com/media/1765509749333_o6ozon_G7zjRbJWUAAkR0a.jpg",
-    "createdAt": "2025-12-14T05:21:02.668Z"
-  },
-  {
     "id": "1765689662668w7ykqaxqo",
     "title": "Black and White Portrait with 35mm Lens Look",
     "promptEn": "Generate a top-angle and close-up black and white portrait of my face, focused on the head facing forward. Use a 35mm lens look, 10.7K 4HD quality. Proud expression. Deep black shadow background - only the face, the upper chest, and the shoulder.",
@@ -988,17 +2271,6 @@
       "Nano Banana"
     ],
     "image": "https://cms-assets.youmind.com/media/1765509692368_7psoyc_G7zd236XkAAYkWK.jpg",
-    "createdAt": "2025-12-14T05:21:02.668Z"
-  },
-  {
-    "id": "1765689662668bl6t64yxi",
-    "title": "High-Fashion Industrial Art Gallery Portrait Prompt",
-    "promptEn": "A hyper-realistic, high-fashion photograph of a stylish young man in a modern industrial art gallery. The man has thick, messy dark hair styled in a voluminous quiff, a full groomed beard, and is wearing dark-tinted sunglasses. He is leaning casually against a massive, brushed-steel sculpture shaped like the letter 'Z'. Perched on top of the 'Z' structure are 3D metal letters spelling out \"{argument name=\"brand name\" default=\"ZarOon\"}\".\nThe man is dressed in trendy streetwear: an oversized t-shirt with a red, blue, and gold gradient tie-dye pattern featuring a \"ZO\" logo on the chest, paired with black cargo pants featuring orange and green vertical stripes on the pockets, and chunky white sneakers. He has his hands in his pockets and one leg crossed over the other.\nThe background is a minimalist gallery space with raw concrete walls (brutalist style) and polished concrete floors. Natural light streams in from a window on the right, creating soft shadows. In the background, there is another abstract twisted metal sculpture on a pedestal. 8k resolution, cinematic lighting, sharp focus, streetwear lookbook aesthetic.",
-    "promptZh": "",
-    "categories": [
-      "Nano Banana"
-    ],
-    "image": "https://cms-assets.youmind.com/media/1765509762235_zd0er7_G7zZ_jGaMAcXfKs.jpg",
     "createdAt": "2025-12-14T05:21:02.668Z"
   },
   {

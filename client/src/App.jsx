@@ -141,6 +141,7 @@ function App() {
           onClose={() => setSelectedPreset(null)}
           preset={selectedPreset}
           lang={lang}
+          onSuccess={fetchPresets}
         />
       </div>
     </div>

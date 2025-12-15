@@ -12,6 +12,7 @@ const PORT = 3001;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+// Serve uploads folder. IMPORTANT: If images are missing, check if this folder exists and contains images.
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Storage
@@ -128,6 +129,57 @@ app.delete('/api/presets/:id', (req, res) => {
     fs.writeFile(DATA_FILE, JSON.stringify(newPresets, null, 2), (err) => {
       if (err) return res.status(500).json({ error: 'Failed to save data' });
       res.json({ success: true });
+    });
+  });
+});
+
+// Update preset (PUT)
+app.put('/api/presets/:id', upload.single('image'), (req, res) => {
+  const { id } = req.params;
+  let { title, promptEn, promptZh, categories } = req.body;
+  const imagePath = req.file ? `/uploads/${req.file.filename}` : undefined;
+
+  // Handle categories
+  if (typeof categories === 'string') {
+    try {
+      categories = JSON.parse(categories);
+    } catch (e) {
+      categories = [categories];
+    }
+  }
+
+  fs.readFile(DATA_FILE, 'utf8', (err, data) => {
+    if (err) return res.status(500).json({ error: 'Failed to read data' });
+    let presets = [];
+    try { presets = JSON.parse(data); } catch (e) { return res.status(500).json({ error: 'Data corrupted' }); }
+
+    const idx = presets.findIndex(p => p.id === id);
+    if (idx === -1) return res.status(404).json({ error: 'Preset not found' });
+
+    // Update fields
+    const updatedPreset = { ...presets[idx] };
+    if (title !== undefined) updatedPreset.title = title;
+    if (promptEn !== undefined) updatedPreset.promptEn = promptEn;
+    if (promptZh !== undefined) updatedPreset.promptZh = promptZh;
+    if (categories !== undefined) updatedPreset.categories = Array.isArray(categories) ? categories : [];
+    
+    // Update image if new one provided
+    if (imagePath) {
+      // Delete old image if it was local
+      if (updatedPreset.image && updatedPreset.image.startsWith('/uploads/')) {
+        const oldPath = path.join(__dirname, updatedPreset.image);
+        if (fs.existsSync(oldPath)) {
+          fs.unlink(oldPath, () => {});
+        }
+      }
+      updatedPreset.image = imagePath;
+    }
+
+    presets[idx] = updatedPreset;
+
+    fs.writeFile(DATA_FILE, JSON.stringify(presets, null, 2), (err) => {
+      if (err) return res.status(500).json({ error: 'Failed to save data' });
+      res.json(updatedPreset);
     });
   });
 });
