@@ -83,16 +83,11 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
 
         {/* Category Badge - Updated Style */}
         <div className="absolute top-2 left-2 z-10 flex gap-1 flex-wrap max-w-[80%]">
-          {(preset.categories || []).slice(0, 3).map((cat, i) => (
+          {(preset.categories || []).filter(c => c !== "LeaderAI" && c !== "Nano Banana" && c !== "Featured Prompts").slice(0, 2).map((cat, i) => (
             <span key={i} className="px-2 py-1 rounded-full text-[10px] font-medium bg-[#1A2333]/90 backdrop-blur-md text-blue-200 border border-blue-500/20 shadow-lg">
               {cat}
             </span>
           ))}
-          {(preset.categories || []).length > 3 && (
-            <span className="px-2 py-1 rounded-full text-[10px] font-medium bg-[#1A2333]/90 backdrop-blur-md text-blue-200 border border-blue-500/20 shadow-lg">
-              +{(preset.categories.length - 3)}
-            </span>
-          )}
         </div>
 
         {/* Delete Button (Only visible on hover) */}

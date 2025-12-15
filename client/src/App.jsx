@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ArrowUp } from 'lucide-react';
 import { Header } from './components/Header';
 import { PresetCard } from './components/PresetCard';
 import { AddPresetModal } from './components/AddPresetModal';
@@ -15,14 +16,41 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [categories, setCategories] = useState([]);
+  const [categoryCounts, setCategoryCounts] = useState({});
+  
+  const MAIN_CATEGORIES = [
+    "建筑设计",
+    "景观设计",
+    "室内设计",
+    "规划设计",
+    "改造设计",
+    "电商设计",
+    "创意广告",
+    "人物与摄影",
+    "插画艺术",
+    "创意玩法"
+  ];
+  
   const [isModalOpen, setIsModalOpen] = useState(false); // For Add Modal
   const [isTagManagerOpen, setIsTagManagerOpen] = useState(false); // For Tag Manager
   const [selectedPreset, setSelectedPreset] = useState(null); // For View Modal
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const t = translations[lang].app;
 
   useEffect(() => {
     fetchPresets();
+    
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const fetchPresets = async () => {
@@ -35,9 +63,21 @@ function App() {
       setPresets(presetsRes.data);
       setPinnedTags(settingsRes.data.pinnedTags || []);
       
-      // Extract unique categories
-      const cats = [...new Set(presetsRes.data.flatMap(p => p.categories || []).filter(Boolean))];
-      setCategories(cats);
+      // Calculate counts for MAIN_CATEGORIES
+      const counts = {};
+      presetsRes.data.forEach(p => {
+        if (p.categories) {
+          p.categories.forEach(c => {
+            if (MAIN_CATEGORIES.includes(c)) {
+              counts[c] = (counts[c] || 0) + 1;
+            }
+          });
+        }
+      });
+      setCategoryCounts(counts);
+
+      // Use predefined categories order
+      setCategories(MAIN_CATEGORIES);
     } catch (err) {
       console.error("Failed to fetch data:", err);
     }
@@ -57,12 +97,24 @@ function App() {
     if (aPinned && !bPinned) return -1;
     if (!aPinned && bPinned) return 1;
     
-    // Default sort by creation time (assuming presets are already sorted or we can use ID/timestamp)
-    // Presets from API are usually sorted by new, but let's be safe if needed, 
-    // though the current implementation adds new to top (unshift) so index order is fine.
-    // If we want to strictly keep original order for non-pinned:
+    // Default sort by Main Category order then creation time
+    const aMain = (a.categories || []).find(c => MAIN_CATEGORIES.includes(c));
+    const bMain = (b.categories || []).find(c => MAIN_CATEGORIES.includes(c));
+    
+    const aIdx = aMain ? MAIN_CATEGORIES.indexOf(aMain) : 999;
+    const bIdx = bMain ? MAIN_CATEGORIES.indexOf(bMain) : 999;
+    
+    if (aIdx !== bIdx) return aIdx - bIdx;
+    
     return 0;
   });
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className="podui-theme min-h-screen bg-base-dark text-neutral-200 font-sans selection:bg-purple-500/30">
@@ -73,6 +125,7 @@ function App() {
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           categories={categories}
+          categoryCounts={categoryCounts}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
           onAddClick={() => setIsModalOpen(true)}
@@ -143,6 +196,17 @@ function App() {
           lang={lang}
           onSuccess={fetchPresets}
         />
+
+        {/* Scroll To Top Button */}
+        <button
+          onClick={scrollToTop}
+          className={`fixed bottom-8 right-8 p-3 bg-white text-black rounded-full shadow-lg hover:bg-neutral-200 transition-all duration-300 z-40 ${
+            showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+          }`}
+          title="Back to Top"
+        >
+          <ArrowUp size={24} />
+        </button>
       </div>
     </div>
   );

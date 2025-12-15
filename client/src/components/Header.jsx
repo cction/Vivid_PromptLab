@@ -12,6 +12,7 @@ export function Header({
   onAddClick,
   onManageTags,
   categories,
+  categoryCounts = {},
   selectedCategory,
   setSelectedCategory
 }) {
@@ -129,13 +130,21 @@ export function Header({
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={cn(
-                  "px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap border transition-all duration-300",
+                  "px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap border transition-all duration-300 flex items-center gap-1.5",
                   selectedCategory === cat
                     ? "bg-white text-black border-white shadow-lg shadow-white/5"
                     : "bg-transparent border-white/5 text-neutral-400 hover:border-white/20 hover:text-neutral-200"
                 )}
               >
-                {cat}
+                <span>{cat}</span>
+                <span className={cn(
+                  "text-[9px] px-1.5 py-0.5 rounded-full",
+                  selectedCategory === cat
+                    ? "bg-black/10 text-black/60"
+                    : "bg-white/5 text-neutral-500"
+                )}>
+                  {categoryCounts[cat] || 0}
+                </span>
               </button>
             ))}
           </div>
