@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderAI 立得AI | 设计师专业助手</title>
+    <link rel="icon" type="image/svg+xml" href="./src/tag_logo.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="site-header">
+        <h1>Leader Prompt Gallery</h1>
+        <p>全网超全整理AI提示词仓库</p>
+    </header>
+    <div class="container">
+        <!-- 左侧侧边栏 -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul id="category-list">
+                    <!-- 动态生成的目录项 -->
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 右侧主内容区 -->
+        <main class="main-content">
+            <!-- 顶部搜索栏 -->
+            <header class="top-bar">
+                <div class="search-wrapper">
+                    <button id="sort-btn" class="sort-btn" title="切换排序: 时间/名称">
+                        排序方式：最新
+                    </button>
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="搜索标题或作者...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 卡片展示区 -->
+            <div id="scroll-wrapper" class="scroll-wrapper">
+                <div id="card-grid" class="card-grid">
+                    <!-- 动态生成的卡片 -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 图片放大模态框 -->
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div class="modal-nav-btn prev-btn" id="modal-prev-btn">❮</div>
+        <div class="modal-nav-btn next-btn" id="modal-next-btn">❯</div>
+        <div id="caption"></div>
+    </div>
+
+    <!-- 模态框 (用于显示完整提示词) -->
+    <div id="prompt-modal" class="modal">
+        <span class="close-modal" id="close-prompt-modal">&times;</span>
+        <div class="modal-content prompt-modal-content">
+            <div id="modal-prompt-text" class="modal-prompt-text"></div>
+            <div class="modal-actions">
+                <button id="modal-copy-btn" class="action-btn modal-copy-btn">
+                    点击复制
+                </button>
+                <button id="modal-copy-try-btn" class="action-btn modal-copy-try-btn">
+                    复制并尝试
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
