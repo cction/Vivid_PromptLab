@@ -8,6 +8,7 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
   const [copied, setCopied] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
   const t = translations[lang].card;
+  const categoryLabels = translations[lang].categories || {};
 
   const prompt = lang === 'zh' ? (preset.promptZh || preset.promptEn) : preset.promptEn;
 
@@ -67,6 +68,7 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
           <img 
             src={imageUrl} 
             alt={preset.title} 
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
         ) : (
@@ -81,11 +83,14 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
         {/* Overlay Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
 
-        {/* Category Badge - Updated Style */}
+        {/* Category Badge - Unified Style */}
         <div className="absolute top-2 left-2 z-10 flex gap-1 flex-wrap max-w-[80%]">
           {(preset.categories || []).filter(c => c !== "LeaderAI" && c !== "Nano Banana" && c !== "Featured Prompts").slice(0, 2).map((cat, i) => (
-            <span key={i} className="px-2 py-1 rounded-full text-[10px] font-medium bg-[#1A2333]/90 backdrop-blur-md text-blue-200 border border-blue-500/20 shadow-lg">
-              {cat}
+            <span
+              key={i}
+              className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-black/60 text-neutral-200 border border-white/15 backdrop-blur-md shadow-sm"
+            >
+              {categoryLabels[cat] || cat}
             </span>
           ))}
         </div>

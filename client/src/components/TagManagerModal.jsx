@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { X, Search, Trash2, Edit2, Check, Merge, Settings, Pin, PinOff } from 'lucide-react';
 import { translations } from '../lib/translations';
@@ -14,38 +14,47 @@ export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
   const [isMerging, setIsMerging] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [newTagName, setNewTagName] = useState('');
-
+  
   const t = translations[lang].tagManager;
+  const categoryLabels = translations[lang].categories || {};
 
-  useEffect(() => {
-    if (isOpen) {
-      fetchTags();
-      fetchSettings();
-      setSelectedTags(new Set());
-      setEditingTag(null);
-      setIsMerging(false);
-      setIsCreating(false);
-      setNewTagName('');
-    }
-  }, [isOpen]);
-
-  const fetchTags = async () => {
+  const fetchTags = useCallback(async () => {
     try {
       const res = await axios.get('http://localhost:3001/api/tags');
       setTags(res.data);
     } catch (err) {
       console.error('Failed to fetch tags', err);
     }
-  };
+  }, []);
 
-  const fetchSettings = async () => {
+  const fetchSettings = useCallback(async () => {
     try {
       const res = await axios.get('http://localhost:3001/api/settings');
       setPinnedTags(res.data.pinnedTags || []);
     } catch (err) {
       console.error('Failed to fetch settings', err);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    let timeoutId;
+    if (isOpen) {
+      timeoutId = setTimeout(() => {
+        fetchTags();
+        fetchSettings();
+        setSelectedTags(new Set());
+        setEditingTag(null);
+        setIsMerging(false);
+        setIsCreating(false);
+        setNewTagName('');
+      }, 0);
+    }
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [isOpen, fetchTags, fetchSettings]);
 
   const handleCreateTag = async () => {
     if (!newTagName.trim()) return;
@@ -274,7 +283,7 @@ export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
                       <div className="flex flex-col min-w-0">
                         <div className="flex items-center gap-2">
                            <span className={cn("text-sm font-medium truncate", pinnedTags.includes(tag.name) ? "text-purple-300" : "text-neutral-200")} title={tag.name}>
-                             {tag.name}
+                             {categoryLabels[tag.name] || tag.name}
                            </span>
                            {pinnedTags.includes(tag.name) && <Pin size={10} className="text-purple-400 shrink-0" fill="currentColor" />}
                         </div>

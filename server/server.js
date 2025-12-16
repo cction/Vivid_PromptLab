@@ -48,11 +48,62 @@ const upload = multer({ storage: storage });
 app.get('/api/presets', (req, res) => {
   fs.readFile(DATA_FILE, 'utf8', (err, data) => {
     if (err) return res.status(500).json({ error: 'Failed to read data' });
+
+    let presets = [];
     try {
-      res.json(JSON.parse(data || '[]'));
+      presets = JSON.parse(data || '[]');
     } catch (e) {
-      res.json([]);
+      return res.json([]);
     }
+
+    const page = parseInt(req.query.page, 10);
+    const pageSize = parseInt(req.query.pageSize, 10);
+    const usePagination = Number.isInteger(page) && page > 0 && Number.isInteger(pageSize) && pageSize > 0;
+
+    if (!usePagination) {
+      return res.json(presets);
+    }
+
+    let filteredPresets = presets;
+    const category = req.query.category;
+    const q = typeof req.query.q === 'string' ? req.query.q.trim() : '';
+
+    if (category && category !== 'All') {
+      filteredPresets = filteredPresets.filter(preset =>
+        Array.isArray(preset.categories) && preset.categories.includes(category)
+      );
+    }
+
+    if (q) {
+      const keyword = q.toLowerCase();
+      filteredPresets = filteredPresets.filter(preset => {
+        const title = (preset.title || '').toLowerCase();
+        const promptEn = (preset.promptEn || '').toLowerCase();
+        const promptZh = (preset.promptZh || '').toLowerCase();
+        return title.includes(keyword) || promptEn.includes(keyword) || promptZh.includes(keyword);
+      });
+    }
+
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const pagedPresets = filteredPresets.slice(startIndex, endIndex);
+
+    const categoryCounts = {};
+    presets.forEach(preset => {
+      if (Array.isArray(preset.categories)) {
+        preset.categories.forEach(cat => {
+          if (typeof cat === 'string') {
+            categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+          }
+        });
+      }
+    });
+
+    return res.json({
+      presets: pagedPresets,
+      total: filteredPresets.length,
+      categoryCounts
+    });
   });
 });
 

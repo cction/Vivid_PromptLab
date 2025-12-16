@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import axios from 'axios';
 import { ArrowUp } from 'lucide-react';
 import { Header } from './components/Header';
@@ -9,27 +9,33 @@ import { TagManagerModal } from './components/TagManagerModal';
 import { translations } from './lib/translations';
 import './styles/podui.css'; // Ensure PodUI styles are loaded
 
+const MAIN_CATEGORIES = [
+  "建筑设计",
+  "景观设计",
+  "室内设计",
+  "规划设计",
+  "改造设计",
+  "电商设计",
+  "创意广告",
+  "人物与摄影",
+  "插画艺术",
+  "创意玩法"
+];
+
 function App() {
   const [presets, setPresets] = useState([]);
   const [pinnedTags, setPinnedTags] = useState([]);
   const [lang, setLang] = useState('zh');
+  const [searchInput, setSearchInput] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [sortByNewest, setSortByNewest] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoryCounts, setCategoryCounts] = useState({});
-  
-  const MAIN_CATEGORIES = [
-    "建筑设计",
-    "景观设计",
-    "室内设计",
-    "规划设计",
-    "改造设计",
-    "电商设计",
-    "创意广告",
-    "人物与摄影",
-    "插画艺术",
-    "创意玩法"
-  ];
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(60);
+  const [totalPresets, setTotalPresets] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   
   const [isModalOpen, setIsModalOpen] = useState(false); // For Add Modal
   const [isTagManagerOpen, setIsTagManagerOpen] = useState(false); // For Tag Manager
@@ -38,9 +44,58 @@ function App() {
 
   const t = translations[lang].app;
 
+  const fetchPresets = useCallback(async (pageToLoad = 1) => {
+    try {
+      setIsLoading(true);
+      const [presetsRes, settingsRes] = await Promise.all([
+        axios.get('http://localhost:3001/api/presets', {
+          params: {
+            page: pageToLoad,
+            pageSize,
+            category: selectedCategory === 'All' ? undefined : selectedCategory,
+            q: searchTerm || undefined
+          }
+        }),
+        axios.get('http://localhost:3001/api/settings')
+      ]);
+      
+      const data = presetsRes.data;
+      const presetsList = Array.isArray(data) ? data : data.presets || [];
+
+      setPresets(presetsList);
+      setPinnedTags(settingsRes.data.pinnedTags || []);
+      
+      let counts = {};
+      if (!Array.isArray(data) && data.categoryCounts) {
+        counts = data.categoryCounts;
+      } else {
+        presetsList.forEach(p => {
+          if (p.categories) {
+            p.categories.forEach(c => {
+              if (MAIN_CATEGORIES.includes(c)) {
+                counts[c] = (counts[c] || 0) + 1;
+              }
+            });
+          }
+        });
+      }
+      setCategoryCounts(counts);
+
+      setCategories(MAIN_CATEGORIES);
+
+      const total = !Array.isArray(data) && typeof data.total === 'number'
+        ? data.total
+        : presetsList.length;
+      setTotalPresets(total);
+      setPage(pageToLoad);
+    } catch (err) {
+      console.error("Failed to fetch data:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [pageSize, selectedCategory, searchTerm]);
+
   useEffect(() => {
-    fetchPresets();
-    
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowScrollTop(true);
@@ -50,64 +105,65 @@ function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const fetchPresets = async () => {
-    try {
-      const [presetsRes, settingsRes] = await Promise.all([
-        axios.get('http://localhost:3001/api/presets'),
-        axios.get('http://localhost:3001/api/settings')
-      ]);
-      
-      setPresets(presetsRes.data);
-      setPinnedTags(settingsRes.data.pinnedTags || []);
-      
-      // Calculate counts for MAIN_CATEGORIES
-      const counts = {};
-      presetsRes.data.forEach(p => {
-        if (p.categories) {
-          p.categories.forEach(c => {
-            if (MAIN_CATEGORIES.includes(c)) {
-              counts[c] = (counts[c] || 0) + 1;
-            }
-          });
-        }
-      });
-      setCategoryCounts(counts);
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setSearchTerm(searchInput);
+    }, 300);
+    return () => clearTimeout(id);
+  }, [searchInput]);
 
-      // Use predefined categories order
-      setCategories(MAIN_CATEGORIES);
-    } catch (err) {
-      console.error("Failed to fetch data:", err);
+  useEffect(() => {
+    const id = setTimeout(() => {
+      fetchPresets(1);
+    }, 0);
+    return () => clearTimeout(id);
+  }, [selectedCategory, searchTerm, fetchPresets]);
+
+  const totalPages = Math.max(1, Math.ceil(totalPresets / pageSize));
+
+  const handlePrevPage = () => {
+    if (page > 1 && !isLoading) {
+      fetchPresets(page - 1);
     }
   };
 
-  const filteredPresets = presets.filter(preset => {
-    const matchesSearch = (preset.title?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
-                          (preset.promptEn?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
-                          (preset.promptZh?.toLowerCase() || '').includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || (preset.categories && preset.categories.includes(selectedCategory));
-    return matchesSearch && matchesCategory;
-  }).sort((a, b) => {
-    // Check if any category is pinned
-    const aPinned = (a.categories || []).some(cat => pinnedTags.includes(cat));
-    const bPinned = (b.categories || []).some(cat => pinnedTags.includes(cat));
-    
-    if (aPinned && !bPinned) return -1;
-    if (!aPinned && bPinned) return 1;
-    
-    // Default sort by Main Category order then creation time
-    const aMain = (a.categories || []).find(c => MAIN_CATEGORIES.includes(c));
-    const bMain = (b.categories || []).find(c => MAIN_CATEGORIES.includes(c));
-    
-    const aIdx = aMain ? MAIN_CATEGORIES.indexOf(aMain) : 999;
-    const bIdx = bMain ? MAIN_CATEGORIES.indexOf(bMain) : 999;
-    
-    if (aIdx !== bIdx) return aIdx - bIdx;
-    
-    return 0;
-  });
+  const handleNextPage = () => {
+    if (page < totalPages && !isLoading) {
+      fetchPresets(page + 1);
+    }
+  };
+
+  const filteredPresets = useMemo(() => {
+    return presets
+      .sort((a, b) => {
+        if (sortByNewest) {
+          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : (Number(a.id) || 0);
+          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : (Number(b.id) || 0);
+          return dateB - dateA;
+        }
+
+        const aPinned = (a.categories || []).some(cat => pinnedTags.includes(cat));
+        const bPinned = (b.categories || []).some(cat => pinnedTags.includes(cat));
+
+        if (aPinned && !bPinned) return -1;
+        if (!aPinned && bPinned) return 1;
+
+        const aMain = (a.categories || []).find(c => MAIN_CATEGORIES.includes(c));
+        const bMain = (b.categories || []).find(c => MAIN_CATEGORIES.includes(c));
+
+        const aIdx = aMain ? MAIN_CATEGORIES.indexOf(aMain) : 999;
+        const bIdx = bMain ? MAIN_CATEGORIES.indexOf(bMain) : 999;
+
+        if (aIdx !== bIdx) return aIdx - bIdx;
+
+        return 0;
+      });
+  }, [presets, sortByNewest, pinnedTags]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -122,12 +178,14 @@ function App() {
         <Header 
           lang={lang} 
           setLang={setLang}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
+          searchTerm={searchInput}
+          setSearchTerm={setSearchInput}
           categories={categories}
           categoryCounts={categoryCounts}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          sortByNewest={sortByNewest}
+          setSortByNewest={setSortByNewest}
           onAddClick={() => setIsModalOpen(true)}
           onManageTags={() => setIsTagManagerOpen(true)}
         />
@@ -175,7 +233,7 @@ function App() {
         <AddPresetModal 
           isOpen={isModalOpen} 
           onClose={() => setIsModalOpen(false)}
-          onSuccess={fetchPresets}
+          onSuccess={() => fetchPresets(page)}
           existingCategories={categories}
           lang={lang}
         />
@@ -185,7 +243,7 @@ function App() {
           isOpen={isTagManagerOpen}
           onClose={() => setIsTagManagerOpen(false)}
           lang={lang}
-          onSuccess={fetchPresets}
+          onSuccess={() => fetchPresets(page)}
         />
 
         {/* View Modal */}
@@ -194,8 +252,32 @@ function App() {
           onClose={() => setSelectedPreset(null)}
           preset={selectedPreset}
           lang={lang}
-          onSuccess={fetchPresets}
+          onSuccess={() => fetchPresets(page)}
         />
+
+        {totalPresets > 0 && (
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick={handlePrevPage}
+              disabled={page <= 1 || isLoading}
+              className="px-3 py-1.5 rounded-full text-sm border border-white/10 disabled:opacity-50 disabled:cursor-not-allowed bg-neutral-900 hover:bg-neutral-800"
+            >
+              {lang === 'zh' ? '上一页' : 'Previous'}
+            </button>
+            <span className="text-xs text-neutral-400">
+              {lang === 'zh'
+                ? `第 ${page} / ${totalPages} 页 · 共 ${totalPresets} 条`
+                : `Page ${page} / ${totalPages} · ${totalPresets} items`}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={page >= totalPages || isLoading}
+              className="px-3 py-1.5 rounded-full text-sm border border-white/10 disabled:opacity-50 disabled:cursor-not-allowed bg-neutral-900 hover:bg-neutral-800"
+            >
+              {lang === 'zh' ? '下一页' : 'Next'}
+            </button>
+          </div>
+        )}
 
         {/* Scroll To Top Button */}
         <button

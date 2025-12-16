@@ -6,6 +6,7 @@ export const translations = {
       create: "Create",
       searchPlaceholder: "Search for prompts...",
       allCategories: "All",
+      latest: "Newest",
       noPrompts: "No prompts found",
       noPromptsDesc: "Try adjusting your search or category filters to find what you're looking for.",
       createFirst: "Create First Prompt",
@@ -55,6 +56,18 @@ export const translations = {
       noTags: "No tags found",
       createTag: "Create Tag",
       newTagPlaceholder: "Enter new tag name...",
+    },
+    categories: {
+      "建筑设计": "Architecture Design",
+      "景观设计": "Landscape Design",
+      "室内设计": "Interior Design",
+      "规划设计": "Urban Planning",
+      "改造设计": "Renovation Design",
+      "电商设计": "E-commerce Design",
+      "创意广告": "Creative Advertising",
+      "人物与摄影": "People & Photography",
+      "插画艺术": "Illustration Art",
+      "创意玩法": "Creative Play"
     }
   },
   zh: {
@@ -64,6 +77,7 @@ export const translations = {
       create: "新建",
       searchPlaceholder: "搜索提示词...",
       allCategories: "全部",
+      latest: "最新",
       noPrompts: "未找到提示词",
       noPromptsDesc: "尝试调整搜索关键词或分类筛选。",
       createFirst: "创建第一个提示词",
@@ -113,6 +127,18 @@ export const translations = {
       noTags: "未找到标签",
       createTag: "新建标签",
       newTagPlaceholder: "输入新标签名称...",
+    },
+    categories: {
+      "建筑设计": "建筑设计",
+      "景观设计": "景观设计",
+      "室内设计": "室内设计",
+      "规划设计": "规划设计",
+      "改造设计": "改造设计",
+      "电商设计": "电商设计",
+      "创意广告": "创意广告",
+      "人物与摄影": "人物与摄影",
+      "插画艺术": "插画艺术",
+      "创意玩法": "创意玩法"
     }
   }
 };

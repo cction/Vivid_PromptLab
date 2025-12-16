@@ -14,9 +14,12 @@ export function Header({
   categories,
   categoryCounts = {},
   selectedCategory,
-  setSelectedCategory
+  setSelectedCategory,
+  sortByNewest,
+  setSortByNewest
 }) {
   const t = translations[lang].app;
+  const categoryLabels = translations[lang].categories || {};
 
   return (
     <div className="flex flex-col gap-8 mb-10">
@@ -115,28 +118,48 @@ export function Header({
         <div className="flex-1 w-full">
           <div className="flex flex-wrap gap-2">
             <button
-              onClick={() => setSelectedCategory('All')}
+              onClick={() => {
+                setSelectedCategory('All');
+                setSortByNewest(false);
+              }}
               className={cn(
                 "px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap border transition-all duration-300",
-                selectedCategory === 'All'
+                selectedCategory === 'All' && !sortByNewest
                   ? "bg-white text-black border-white shadow-lg shadow-white/5"
                   : "bg-transparent border-white/5 text-neutral-400 hover:border-white/20 hover:text-neutral-200"
               )}
             >
               {t.allCategories}
             </button>
+            <button
+              onClick={() => {
+                setSelectedCategory('All');
+                setSortByNewest(true);
+              }}
+              className={cn(
+                "px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap border transition-all duration-300",
+                sortByNewest
+                  ? "bg-white text-black border-white shadow-lg shadow-white/5"
+                  : "bg-transparent border-white/5 text-neutral-400 hover:border-white/20 hover:text-neutral-200"
+              )}
+            >
+              {t.latest}
+            </button>
             {categories.map(cat => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setSortByNewest(false);
+                }}
                 className={cn(
                   "px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap border transition-all duration-300 flex items-center gap-1.5",
-                  selectedCategory === cat
+                  selectedCategory === cat && !sortByNewest
                     ? "bg-white text-black border-white shadow-lg shadow-white/5"
                     : "bg-transparent border-white/5 text-neutral-400 hover:border-white/20 hover:text-neutral-200"
                 )}
               >
-                <span>{cat}</span>
+                <span>{categoryLabels[cat] || cat}</span>
                 <span className={cn(
                   "text-[9px] px-1.5 py-0.5 rounded-full",
                   selectedCategory === cat
