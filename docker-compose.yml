@@ -1,0 +1,53 @@
+services:
+  # Backend API Server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: promptlab-server
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      # Persist uploaded images
+      - ./server/uploads:/app/uploads
+      # Persist presets data
+      - ./server/presets.json:/app/presets.json
+      # Persist settings
+      - ./server/settings.json:/app/settings.json
+    environment:
+      - NODE_ENV=production
+    networks:
+      - promptlab-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/api/presets"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Frontend Web Client
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: promptlab-client
+    restart: unless-stopped
+    ports:
+      - "8189:80"
+    depends_on:
+      server:
+        condition: service_healthy
+    networks:
+      - promptlab-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+networks:
+  promptlab-network:
+    driver: bridge
+

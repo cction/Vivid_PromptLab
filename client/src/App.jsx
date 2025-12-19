@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import axios from 'axios';
 import { ArrowUp } from 'lucide-react';
+import api from './lib/api';
 import { Header } from './components/Header';
 import { PresetCard } from './components/PresetCard';
 import { AddPresetModal } from './components/AddPresetModal';
@@ -48,7 +48,7 @@ function App() {
     try {
       setIsLoading(true);
       const [presetsRes, settingsRes] = await Promise.all([
-        axios.get('http://localhost:3001/api/presets', {
+        api.get('/api/presets', {
           params: {
             page: pageToLoad,
             pageSize,
@@ -56,7 +56,7 @@ function App() {
             q: searchTerm || undefined
           }
         }),
-        axios.get('http://localhost:3001/api/settings')
+        api.get('/api/settings')
       ]);
       
       const data = presetsRes.data;

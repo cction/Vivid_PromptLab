@@ -1,8 +1,8 @@
 import React from 'react';
 import { Copy, Check, Tag, Maximize2, Trash2 } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn, copyToClipboard } from '../lib/utils';
 import { translations } from '../lib/translations';
-import axios from 'axios';
+import api, { getImageUrl } from '../lib/api';
 
 export function PresetCard({ preset, lang, onDelete, onClick }) {
   const [copied, setCopied] = React.useState(false);
@@ -14,9 +14,12 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
 
   const handleCopy = (e) => {
     e.stopPropagation();
-    navigator.clipboard.writeText(prompt);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    copyToClipboard(prompt).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }).catch(err => {
+      console.error('Copy failed:', err);
+    });
   };
 
   const handleDelete = async (e) => {
@@ -30,7 +33,7 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
     if (confirmed) {
       setIsDeleting(true);
       try {
-        await axios.delete(`http://localhost:3001/api/presets/${preset.id}`);
+        await api.delete(`/api/presets/${preset.id}`);
         onDelete();
       } catch (err) {
         console.error('Failed to delete preset:', err);
@@ -41,16 +44,7 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
   };
 
   // Handle both local uploads and external URLs
-  let imageUrl = null;
-  if (preset.image) {
-    if (preset.image.startsWith('http')) {
-      imageUrl = preset.image;
-    } else {
-      // Ensure local paths start with slash if not already
-      const path = preset.image.startsWith('/') ? preset.image : `/${preset.image}`;
-      imageUrl = `http://localhost:3001${path}`;
-    }
-  }
+  const imageUrl = getImageUrl(preset.image);
 
   if (isDeleting) return null; // Optimistic UI update
 

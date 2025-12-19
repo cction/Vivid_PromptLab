@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { X, Upload, Image as ImageIcon, Loader2 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { translations } from '../lib/translations';
+import api from '../lib/api';
 
 export function AddPresetModal({ isOpen, onClose, onSuccess, existingCategories, lang }) {
   const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ export function AddPresetModal({ isOpen, onClose, onSuccess, existingCategories,
 
     setTranslatingField(target);
     try {
-      const res = await axios.post('http://localhost:3001/api/translate', {
+      const res = await api.post('/api/translate', {
         text,
         source,
         target
@@ -92,7 +92,7 @@ export function AddPresetModal({ isOpen, onClose, onSuccess, existingCategories,
     }
 
     try {
-      await axios.post('http://localhost:3001/api/presets', data, {
+      await api.post('/api/presets', data, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       onSuccess();

@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import axios from 'axios';
 import { X, Search, Trash2, Edit2, Check, Merge, Settings, Pin, PinOff } from 'lucide-react';
 import { translations } from '../lib/translations';
 import { cn } from '../lib/utils';
+import api from '../lib/api';
 
 export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
   const [tags, setTags] = useState([]);
@@ -20,7 +20,7 @@ export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
 
   const fetchTags = useCallback(async () => {
     try {
-      const res = await axios.get('http://localhost:3001/api/tags');
+      const res = await api.get('/api/tags');
       setTags(res.data);
     } catch (err) {
       console.error('Failed to fetch tags', err);
@@ -29,7 +29,7 @@ export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
 
   const fetchSettings = useCallback(async () => {
     try {
-      const res = await axios.get('http://localhost:3001/api/settings');
+      const res = await api.get('/api/settings');
       setPinnedTags(res.data.pinnedTags || []);
     } catch (err) {
       console.error('Failed to fetch settings', err);
@@ -59,7 +59,7 @@ export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
   const handleCreateTag = async () => {
     if (!newTagName.trim()) return;
     try {
-      await axios.post('http://localhost:3001/api/tags', { name: newTagName.trim() });
+      await api.post('/api/tags', { name: newTagName.trim() });
       await fetchTags();
       setIsCreating(false);
       setNewTagName('');
@@ -71,7 +71,7 @@ export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
 
   const handleTogglePin = async (tag) => {
     try {
-      const res = await axios.post('http://localhost:3001/api/tags/pin', { tag });
+      const res = await api.post('/api/tags/pin', { tag });
       setPinnedTags(res.data.pinnedTags);
       if (onSuccess) onSuccess(); // Notify parent to refresh list order
     } catch (err) {
@@ -81,7 +81,7 @@ export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
 
   const handleBatchUpdate = async (oldNames, newName) => {
     try {
-      await axios.post('http://localhost:3001/api/tags/batch', {
+      await api.post('/api/tags/batch', {
         oldNames,
         newName // null for delete
       });

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { X, Copy, Check, Tag, Loader2, Edit2, Save, ImagePlus } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn, copyToClipboard } from '../lib/utils';
 import { translations } from '../lib/translations';
+import api, { getImageUrl } from '../lib/api';
 
 export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) {
   const [copiedEn, setCopiedEn] = useState(false);
@@ -28,7 +28,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
     if (!isOpen || !isEditing) return;
     const fetchTags = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/tags');
+        const res = await api.get('/api/tags');
         setExistingTags(res.data || []);
       } catch (err) {
         console.error('Failed to fetch tags', err);
@@ -47,7 +47,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
         if (en && !zh) {
           setIsTranslating(true);
           try {
-            const res = await axios.post('http://localhost:3001/api/translate', {
+            const res = await api.post('/api/translate', {
               text: en,
               source: 'en',
               target: 'zh'
@@ -60,7 +60,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
         } else if (!en && zh) {
           setIsTranslating(true);
           try {
-            const res = await axios.post('http://localhost:3001/api/translate', {
+            const res = await api.post('/api/translate', {
               text: zh,
               source: 'zh',
               target: 'en'
@@ -74,15 +74,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
 
         setPrompts({ en, zh });
         
-        let imgUrl = null;
-        if (preset.image) {
-           if (preset.image.startsWith('http')) {
-             imgUrl = preset.image;
-           } else {
-             const path = preset.image.startsWith('/') ? preset.image : `/${preset.image}`;
-             imgUrl = `http://localhost:3001${path}`;
-           }
-        }
+        const imgUrl = getImageUrl(preset.image);
         setEditForm({
           title: preset.title,
           promptEn: en,
@@ -112,7 +104,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
       const target = source === 'en' ? 'zh' : 'en';
       
       // Call API
-      const res = await axios.post('http://localhost:3001/api/translate', {
+      const res = await api.post('/api/translate', {
         text,
         source,
         target
@@ -143,7 +135,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
         formData.append('image', editForm.image);
       }
 
-      await axios.put(`http://localhost:3001/api/presets/${preset.id}`, formData, {
+      await api.put(`/api/presets/${preset.id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       
@@ -200,14 +192,17 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
   let imageUrl = editForm.imageUrl; 
 
   const handleCopy = (text, type) => {
-    navigator.clipboard.writeText(text);
-    if (type === 'en') {
-      setCopiedEn(true);
-      setTimeout(() => setCopiedEn(false), 2000);
-    } else {
-      setCopiedZh(true);
-      setTimeout(() => setCopiedZh(false), 2000);
-    }
+    copyToClipboard(text).then(() => {
+      if (type === 'en') {
+        setCopiedEn(true);
+        setTimeout(() => setCopiedEn(false), 2000);
+      } else {
+        setCopiedZh(true);
+        setTimeout(() => setCopiedZh(false), 2000);
+      }
+    }).catch(err => {
+      console.error('Copy failed:', err);
+    });
   };
 
   return (
