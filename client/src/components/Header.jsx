@@ -12,6 +12,7 @@ export function Header({
   onAddClick,
   onManageTags,
   onOpenAdminSettings,
+  onOpenAdminAuth,
   categories,
   categoryCounts = {},
   selectedCategory,
@@ -93,16 +94,13 @@ export function Header({
 
           <button 
             onClick={() => {
-              if (isAdmin) {
-                window.history.pushState(null, '', '/admin');
-                window.dispatchEvent(new PopStateEvent('popstate'));
-                if (onOpenAdminSettings) onOpenAdminSettings();
+              const path = typeof window !== 'undefined' ? (window.location.pathname || '/') : '/';
+              if (!path.startsWith('/admin')) {
+                // 首页或普通页面：始终先验证
+                if (onOpenAdminAuth) onOpenAdminAuth();
               } else {
-                // open auth modal
-                if (typeof window !== 'undefined') {
-                  const evt = new CustomEvent('openAdminAuth');
-                  window.dispatchEvent(evt);
-                }
+                // 管理页内：打开设置
+                if (onOpenAdminSettings) onOpenAdminSettings();
               }
             }}
             className="group flex items-center gap-2 px-4 py-2 bg-black/20 text-neutral-300 rounded-full text-sm hover:bg-black/40 transition-all border border-white/5"

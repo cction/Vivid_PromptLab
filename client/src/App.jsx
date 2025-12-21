@@ -129,7 +129,6 @@ function App() {
     let nextCategory = 'All';
     let nextNewest = false;
     if (path.startsWith('/admin')) {
-      setShowAdminSettings(true);
       hasInitRef.current = true;
       return;
     }
@@ -152,7 +151,6 @@ function App() {
       const p = window.location.pathname || '/';
       api.get('/api/auth/me').then(() => setIsAdmin(true)).catch(() => setIsAdmin(false));
       if (p.startsWith('/admin')) {
-        setShowAdminSettings(true);
         fetchPresets(1);
         return;
       }
@@ -253,6 +251,7 @@ function App() {
           canEdit={isAdmin && (window.location.pathname || '/').startsWith('/admin')}
           isAdmin={isAdmin}
           onOpenAdminSettings={() => setShowAdminSettings(true)}
+          onOpenAdminAuth={() => setShowAdminAuth(true)}
         />
         <div className="h-48 md:h-56" />
         <AdminLogin
@@ -263,7 +262,6 @@ function App() {
             setShowAdminAuth(false);
             window.history.pushState(null, '', '/admin');
             window.dispatchEvent(new PopStateEvent('popstate'));
-            setShowAdminSettings(true);
           }}
         />
         {(window.location.pathname || '/') === '/admin' && isAdmin && showAdminSettings && (
