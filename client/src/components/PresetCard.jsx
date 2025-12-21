@@ -4,7 +4,7 @@ import { cn, copyToClipboard } from '../lib/utils';
 import { translations } from '../lib/translations';
 import api, { getImageUrl } from '../lib/api';
 
-export function PresetCard({ preset, lang, onDelete, onClick }) {
+export function PresetCard({ preset, lang, onDelete, onClick, canEdit = false }) {
   const [copied, setCopied] = React.useState(false);
   const [isDeleting, setIsDeleting] = React.useState(false);
   const t = translations[lang].card;
@@ -89,15 +89,17 @@ export function PresetCard({ preset, lang, onDelete, onClick }) {
           ))}
         </div>
 
-        {/* Delete Button (Only visible on hover) */}
-        <div className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button 
-            onClick={handleDelete}
-            className="p-1.5 rounded-full bg-black/40 backdrop-blur-md text-white/70 hover:text-red-400 hover:bg-black/60 border border-white/10 shadow-lg transition-colors"
-          >
-            <Trash2 size={12} />
-          </button>
-        </div>
+        {/* Delete Button (Only visible on hover when canEdit) */}
+        {canEdit && (
+          <div className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <button 
+              onClick={handleDelete}
+              className="p-1.5 rounded-full bg-black/40 backdrop-blur-md text-white/70 hover:text-red-400 hover:bg-black/60 border border-white/10 shadow-lg transition-colors"
+            >
+              <Trash2 size={12} />
+            </button>
+          </div>
+        )}
 
         {/* Title Overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-3 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">

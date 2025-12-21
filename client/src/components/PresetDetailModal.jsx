@@ -4,7 +4,7 @@ import { cn, copyToClipboard } from '../lib/utils';
 import { translations } from '../lib/translations';
 import api, { getImageUrl } from '../lib/api';
 
-export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) {
+export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess, canEdit = false }) {
   const [copiedEn, setCopiedEn] = useState(false);
   const [copiedZh, setCopiedZh] = useState(false);
   const [prompts, setPrompts] = useState({ en: '', zh: '' });
@@ -300,28 +300,30 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
           </div>
           
           <div className="flex items-center gap-2">
-            {!isEditing ? (
-              <button 
-                onClick={() => setIsEditing(true)}
-                className="p-2 rounded-full bg-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-colors"
-                title={t.edit || "Edit"}
-              >
-                <Edit2 size={18} />
-              </button>
-            ) : (
-              <button 
-                onClick={handleSave}
-                disabled={isSaving}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-200 shadow-md",
-                  isSaving
-                    ? "bg-purple-500/70 text-white cursor-wait"
-                    : "bg-purple-500 text-white hover:bg-purple-400"
-                )}
-              >
-                {isSaving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
-                <span>{t.save}</span>
-              </button>
+            {canEdit && (
+              !isEditing ? (
+                <button 
+                  onClick={() => setIsEditing(true)}
+                  className="p-2 rounded-full bg-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-colors"
+                  title={t.edit || 'Edit'}
+                >
+                  <Edit2 size={18} />
+                </button>
+              ) : (
+                <button 
+                  onClick={handleSave}
+                  disabled={isSaving}
+                  className={cn(
+                    "px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-all duration-200 shadow-md",
+                    isSaving
+                      ? "bg-purple-500/70 text-white cursor-wait"
+                      : "bg-purple-500 text-white hover:bg-purple-400"
+                  )}
+                >
+                  {isSaving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
+                  <span>{t.save}</span>
+                </button>
+              )
             )}
             <button onClick={onClose} className="text-neutral-400 hover:text-white transition-colors p-1">
               <X size={24} />
@@ -343,7 +345,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess }) 
               
               {isEditing && (
                 <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <label className="cursor-pointer flex flex-col items-center gap-2 text-white bg黑/50 p-4 rounded-xl hover:bg-black/70 transition-colors border border-white/20">
+                  <label className="cursor-pointer flex flex-col items-center gap-2 text-white bg-black/50 p-4 rounded-xl hover:bg-black/70 transition-colors border border-white/20">
                     <ImagePlus size={32} />
                     <span className="text-sm font-medium">{t.clickToChange}</span>
                     <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />

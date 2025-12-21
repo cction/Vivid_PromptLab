@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
+const crypto = require('crypto');
 
 const app = express();
 const PORT = 3001;
@@ -43,6 +44,111 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Routes
+const ADMIN_USER = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'admin';
+const TOKEN_SECRET = process.env.TOKEN_SECRET || 'dev-secret';
+
+function readSettings() {
+  try {
+    const raw = fs.readFileSync(SETTINGS_FILE, 'utf8');
+    return JSON.parse(raw || '{}');
+  } catch {
+    return {};
+  }
+}
+function writeSettings(obj) {
+  fs.writeFileSync(SETTINGS_FILE, JSON.stringify(obj, null, 2));
+}
+function makeHash(password, salt) {
+  const s = salt || crypto.randomBytes(16).toString('hex');
+  const key = crypto.scryptSync(password, s, 32).toString('hex');
+  return { hash: key, salt: s };
+}
+function verifyHash(password, hash, salt) {
+  const key = crypto.scryptSync(password, salt, 32).toString('hex');
+  return key === hash;
+}
+
+function b64url(obj) {
+  return Buffer.from(JSON.stringify(obj)).toString('base64').replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+}
+function signToken(payload, ttlSec = 24 * 3600) {
+  const header = { alg: 'HS256', typ: 'JWT' };
+  const exp = Math.floor(Date.now() / 1000) + ttlSec;
+  const body = { ...payload, exp };
+  const h = b64url(header);
+  const p = b64url(body);
+  const sig = crypto.createHmac('sha256', TOKEN_SECRET).update(`${h}.${p}`).digest('base64').replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+  return `${h}.${p}.${sig}`;
+}
+function verifyToken(token) {
+  if (!token || typeof token !== 'string') return null;
+  const parts = token.split('.');
+  if (parts.length !== 3) return null;
+  const [h, p, s] = parts;
+  const expected = crypto.createHmac('sha256', TOKEN_SECRET).update(`${h}.${p}`).digest('base64').replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+  if (s !== expected) return null;
+  try {
+    const payload = JSON.parse(Buffer.from(p.replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('utf8'));
+    if (!payload.exp || payload.exp < Math.floor(Date.now() / 1000)) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+function requireAuth(req, res, next) {
+  const auth = req.headers.authorization || '';
+  const token = auth.startsWith('Bearer ') ? auth.slice(7) : null;
+  const payload = verifyToken(token);
+  if (!payload || payload.role !== 'admin') return res.status(401).json({ error: 'Unauthorized' });
+  req.user = payload;
+  next();
+}
+
+app.post('/api/auth/login', (req, res) => {
+  const { username, password } = req.body || {};
+  if (!username || !password) return res.status(400).json({ error: 'Missing credentials' });
+  const settings = readSettings();
+  if (settings.admin && settings.admin.username && settings.admin.hash && settings.admin.salt) {
+    const okUser = username === settings.admin.username;
+    const okPass = verifyHash(password, settings.admin.hash, settings.admin.salt);
+    if (!okUser || !okPass) return res.status(401).json({ error: 'Invalid credentials' });
+  } else {
+    if (username !== ADMIN_USER || password !== ADMIN_PASS) return res.status(401).json({ error: 'Invalid credentials' });
+  }
+  const token = signToken({ role: 'admin', username });
+  res.json({ token, user: { username } });
+});
+app.get('/api/auth/me', (req, res) => {
+  const auth = req.headers.authorization || '';
+  const token = auth.startsWith('Bearer ') ? auth.slice(7) : null;
+  const payload = verifyToken(token);
+  if (!payload) return res.status(401).json({ error: 'Unauthorized' });
+  res.json({ user: { username: payload.username } });
+});
+
+// Update admin password/username
+app.post('/api/admin/password', requireAuth, (req, res) => {
+  const { currentPassword, newPassword, newUsername } = req.body || {};
+  if (!currentPassword || !newPassword) return res.status(400).json({ error: 'Missing parameters' });
+  if (typeof newPassword !== 'string' || newPassword.length < 6) return res.status(400).json({ error: 'Password too short' });
+  const settings = readSettings();
+  let currentOk = false;
+  if (settings.admin && settings.admin.username && settings.admin.hash && settings.admin.salt) {
+    currentOk = verifyHash(currentPassword, settings.admin.hash, settings.admin.salt);
+  } else {
+    currentOk = currentPassword === ADMIN_PASS;
+  }
+  if (!currentOk) return res.status(401).json({ error: 'Invalid current password' });
+  const { hash, salt } = makeHash(newPassword);
+  settings.admin = {
+    username: typeof newUsername === 'string' && newUsername.trim() ? newUsername.trim() : (settings.admin?.username || ADMIN_USER),
+    hash,
+    salt
+  };
+  writeSettings(settings);
+  res.json({ success: true, username: settings.admin.username });
+});
 
 // Get all presets
 app.get('/api/presets', (req, res) => {
@@ -108,7 +214,7 @@ app.get('/api/presets', (req, res) => {
 });
 
 // Add new preset
-app.post('/api/presets', upload.single('image'), (req, res) => {
+app.post('/api/presets', requireAuth, upload.single('image'), (req, res) => {
   let { title, promptEn, promptZh, categories } = req.body;
   const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
 
@@ -148,7 +254,7 @@ app.post('/api/presets', upload.single('image'), (req, res) => {
 });
 
 // Delete preset
-app.delete('/api/presets/:id', (req, res) => {
+app.delete('/api/presets/:id', requireAuth, (req, res) => {
   const { id } = req.params;
   
   fs.readFile(DATA_FILE, 'utf8', (err, data) => {
@@ -185,7 +291,7 @@ app.delete('/api/presets/:id', (req, res) => {
 });
 
 // Update preset (PUT)
-app.put('/api/presets/:id', upload.single('image'), (req, res) => {
+app.put('/api/presets/:id', requireAuth, upload.single('image'), (req, res) => {
   const { id } = req.params;
   let { title, promptEn, promptZh, categories } = req.body;
   const imagePath = req.file ? `/uploads/${req.file.filename}` : undefined;
@@ -236,7 +342,7 @@ app.put('/api/presets/:id', upload.single('image'), (req, res) => {
 });
 
 // Translate API
-app.post('/api/translate', async (req, res) => {
+app.post('/api/translate', requireAuth, async (req, res) => {
   const { text, source, target } = req.body;
   if (!text) return res.status(400).json({ error: 'No text provided' });
 
@@ -274,7 +380,7 @@ app.get('/api/settings', (req, res) => {
 });
 
 // Toggle pin status for a tag
-app.post('/api/tags/pin', (req, res) => {
+app.post('/api/tags/pin', requireAuth, (req, res) => {
   const { tag } = req.body;
   if (!tag) return res.status(400).json({ error: 'No tag provided' });
 
@@ -300,7 +406,7 @@ app.post('/api/tags/pin', (req, res) => {
 });
 
 // Create new tag (empty usage)
-app.post('/api/tags', (req, res) => {
+app.post('/api/tags', requireAuth, (req, res) => {
   const { name } = req.body;
   if (!name || !name.trim()) return res.status(400).json({ error: 'Tag name required' });
   
@@ -376,7 +482,7 @@ app.get('/api/tags', (req, res) => {
 });
 
 // Batch update tags (Rename/Merge/Delete)
-app.post('/api/tags/batch', (req, res) => {
+app.post('/api/tags/batch', requireAuth, (req, res) => {
   const { oldNames, newName } = req.body; // oldNames: string[], newName: string | null
   
   if (!Array.isArray(oldNames) || oldNames.length === 0) {

@@ -12,6 +12,12 @@ export const api = axios.create({
   timeout: 30000,
 });
 
+const TOKEN_KEY = 'promptlab_token';
+const saved = typeof window !== 'undefined' ? window.localStorage.getItem(TOKEN_KEY) : null;
+if (saved) {
+  api.defaults.headers.common['Authorization'] = `Bearer ${saved}`;
+}
+
 // Helper to get full image URL
 export function getImageUrl(path) {
   if (!path) return null;
@@ -21,6 +27,16 @@ export function getImageUrl(path) {
   // For relative paths like /uploads/xxx.jpg
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
   return `${API_BASE_URL}${normalizedPath}`;
+}
+
+export function setAuthToken(token) {
+  if (token) {
+    window.localStorage.setItem(TOKEN_KEY, token);
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    window.localStorage.removeItem(TOKEN_KEY);
+    delete api.defaults.headers.common['Authorization'];
+  }
 }
 
 export default api;

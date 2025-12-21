@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { ArrowUp } from 'lucide-react';
 import api from './lib/api';
 import { Header } from './components/Header';
@@ -7,6 +7,8 @@ import { AddPresetModal } from './components/AddPresetModal';
 import { PresetDetailModal } from './components/PresetDetailModal';
 import { TagManagerModal } from './components/TagManagerModal';
 import { translations } from './lib/translations';
+import { AdminLogin } from './components/AdminLogin';
+import { AdminSettings } from './components/AdminSettings';
 import './styles/podui.css'; // Ensure PodUI styles are loaded
 
 const MAIN_CATEGORIES = [
@@ -41,8 +43,13 @@ function App() {
   const [isTagManagerOpen, setIsTagManagerOpen] = useState(false); // For Tag Manager
   const [selectedPreset, setSelectedPreset] = useState(null); // For View Modal
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showAdminSettings, setShowAdminSettings] = useState(false);
+  const [showAdminAuth, setShowAdminAuth] = useState(false);
 
   const t = translations[lang].app;
+
+  const hasInitRef = useRef(false);
 
   const fetchPresets = useCallback(async (pageToLoad = 1) => {
     try {
@@ -118,11 +125,74 @@ function App() {
   }, [searchInput]);
 
   useEffect(() => {
+    const path = window.location.pathname || '/';
+    let nextCategory = 'All';
+    let nextNewest = false;
+    if (path.startsWith('/admin')) {
+      setShowAdminSettings(true);
+      hasInitRef.current = true;
+      return;
+    }
+    if (path.startsWith('/category/')) {
+      const name = decodeURIComponent(path.slice('/category/'.length));
+      if (MAIN_CATEGORIES.includes(name)) {
+        nextCategory = name;
+      }
+    } else if (path === '/latest') {
+      nextCategory = 'All';
+      nextNewest = true;
+    } else if (path === '/all') {
+      nextCategory = 'All';
+      nextNewest = false;
+    }
+    setSelectedCategory(nextCategory);
+    setSortByNewest(nextNewest);
+    hasInitRef.current = true;
+    const onPop = () => {
+      const p = window.location.pathname || '/';
+      api.get('/api/auth/me').then(() => setIsAdmin(true)).catch(() => setIsAdmin(false));
+      if (p.startsWith('/admin')) {
+        setShowAdminSettings(true);
+        fetchPresets(1);
+        return;
+      }
+      let cat = 'All';
+      let newest = false;
+      if (p.startsWith('/category/')) {
+        const nm = decodeURIComponent(p.slice('/category/'.length));
+        if (MAIN_CATEGORIES.includes(nm)) {
+          cat = nm;
+        }
+      } else if (p === '/latest') {
+        cat = 'All';
+        newest = true;
+      } else if (p === '/all') {
+        cat = 'All';
+        newest = false;
+      }
+      setSelectedCategory(cat);
+      setSortByNewest(newest);
+      fetchPresets(1);
+    };
+    window.addEventListener('popstate', onPop);
+    const onOpenAuth = () => setShowAdminAuth(true);
+    window.addEventListener('openAdminAuth', onOpenAuth);
+    return () => {
+      window.removeEventListener('popstate', onPop);
+      window.removeEventListener('openAdminAuth', onOpenAuth);
+    };
+  }, [fetchPresets]);
+
+  useEffect(() => {
     const id = setTimeout(() => {
       fetchPresets(1);
     }, 0);
     return () => clearTimeout(id);
   }, [selectedCategory, searchTerm, fetchPresets]);
+
+  useEffect(() => {
+    api.get('/api/auth/me').then(() => setIsAdmin(true)).catch(() => setIsAdmin(false));
+  }, []);
 
   const totalPages = Math.max(1, Math.ceil(totalPresets / pageSize));
 
@@ -146,24 +216,16 @@ function App() {
           const dateB = b.createdAt ? new Date(b.createdAt).getTime() : (Number(b.id) || 0);
           return dateB - dateA;
         }
-
-        const aPinned = (a.categories || []).some(cat => pinnedTags.includes(cat));
-        const bPinned = (b.categories || []).some(cat => pinnedTags.includes(cat));
-
-        if (aPinned && !bPinned) return -1;
-        if (!aPinned && bPinned) return 1;
-
         const aMain = (a.categories || []).find(c => MAIN_CATEGORIES.includes(c));
         const bMain = (b.categories || []).find(c => MAIN_CATEGORIES.includes(c));
-
         const aIdx = aMain ? MAIN_CATEGORIES.indexOf(aMain) : 999;
         const bIdx = bMain ? MAIN_CATEGORIES.indexOf(bMain) : 999;
-
         if (aIdx !== bIdx) return aIdx - bIdx;
-
-        return 0;
+        const da = a.createdAt ? new Date(a.createdAt).getTime() : (Number(a.id) || 0);
+        const db = b.createdAt ? new Date(b.createdAt).getTime() : (Number(b.id) || 0);
+        return db - da;
       });
-  }, [presets, sortByNewest, pinnedTags]);
+  }, [presets, sortByNewest]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -188,7 +250,25 @@ function App() {
           setSortByNewest={setSortByNewest}
           onAddClick={() => setIsModalOpen(true)}
           onManageTags={() => setIsTagManagerOpen(true)}
+          canEdit={isAdmin && (window.location.pathname || '/').startsWith('/admin')}
+          isAdmin={isAdmin}
+          onOpenAdminSettings={() => setShowAdminSettings(true)}
         />
+        <div className="h-48 md:h-56" />
+        <AdminLogin
+          isOpen={showAdminAuth}
+          onClose={() => setShowAdminAuth(false)}
+          onSuccess={() => {
+            setIsAdmin(true);
+            setShowAdminAuth(false);
+            window.history.pushState(null, '', '/admin');
+            window.dispatchEvent(new PopStateEvent('popstate'));
+            setShowAdminSettings(true);
+          }}
+        />
+        {(window.location.pathname || '/') === '/admin' && isAdmin && showAdminSettings && (
+          <AdminSettings isOpen={showAdminSettings} onClose={() => setShowAdminSettings(false)} />
+        )}
 
         {/* Grid - Enhanced Layout */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -203,6 +283,7 @@ function App() {
                 lang={lang} 
                 onDelete={fetchPresets} 
                 onClick={() => setSelectedPreset(preset)}
+                canEdit={isAdmin && (window.location.pathname || '/').startsWith('/admin')}
               />
             </div>
           ))}
@@ -253,6 +334,7 @@ function App() {
           preset={selectedPreset}
           lang={lang}
           onSuccess={() => fetchPresets(page)}
+          canEdit={isAdmin && (window.location.pathname || '/').startsWith('/admin')}
         />
 
         {totalPresets > 0 && (
