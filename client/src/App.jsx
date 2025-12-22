@@ -60,7 +60,10 @@ function App() {
             page: pageToLoad,
             pageSize,
             category: selectedCategory === 'All' ? undefined : selectedCategory,
-            q: searchTerm || undefined
+            q: searchTerm || undefined,
+            sortMode: selectedCategory === 'All'
+              ? (sortByNewest ? 'latest' : 'pinned_first')
+              : (sortByNewest ? 'latest' : 'category')
           }
         }),
         api.get('/api/settings')
@@ -207,23 +210,22 @@ function App() {
   };
 
   const filteredPresets = useMemo(() => {
-    return presets
-      .sort((a, b) => {
-        if (sortByNewest) {
-          const dateA = a.createdAt ? new Date(a.createdAt).getTime() : (Number(a.id) || 0);
-          const dateB = b.createdAt ? new Date(b.createdAt).getTime() : (Number(b.id) || 0);
-          return dateB - dateA;
-        }
-        const aMain = (a.categories || []).find(c => MAIN_CATEGORIES.includes(c));
-        const bMain = (b.categories || []).find(c => MAIN_CATEGORIES.includes(c));
-        const aIdx = aMain ? MAIN_CATEGORIES.indexOf(aMain) : 999;
-        const bIdx = bMain ? MAIN_CATEGORIES.indexOf(bMain) : 999;
-        if (aIdx !== bIdx) return aIdx - bIdx;
-        const da = a.createdAt ? new Date(a.createdAt).getTime() : (Number(a.id) || 0);
-        const db = b.createdAt ? new Date(b.createdAt).getTime() : (Number(b.id) || 0);
-        return db - da;
-      });
-  }, [presets, sortByNewest]);
+    const byDateDesc = (x) => x.createdAt ? new Date(x.createdAt).getTime() : (Number(x.id) || 0);
+    if (sortByNewest) {
+      return presets.slice().sort((a, b) => byDateDesc(b) - byDateDesc(a));
+    }
+    if (selectedCategory === 'All') {
+      return presets;
+    }
+    return presets.slice().sort((a, b) => {
+      const aMain = (a.categories || []).find(c => MAIN_CATEGORIES.includes(c));
+      const bMain = (b.categories || []).find(c => MAIN_CATEGORIES.includes(c));
+      const aIdx = aMain ? MAIN_CATEGORIES.indexOf(aMain) : 999;
+      const bIdx = bMain ? MAIN_CATEGORIES.indexOf(bMain) : 999;
+      if (aIdx !== bIdx) return aIdx - bIdx;
+      return byDateDesc(b) - byDateDesc(a);
+    });
+  }, [presets, sortByNewest, pinnedTags, selectedCategory]);
 
   const scrollToTop = () => {
     window.scrollTo({

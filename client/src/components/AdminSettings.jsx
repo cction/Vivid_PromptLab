@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 import api from '../lib/api';
 
 export function AdminSettings({ isOpen = true, onClose }) {
@@ -9,6 +10,9 @@ export function AdminSettings({ isOpen = true, onClose }) {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const [showCurrent, setShowCurrent] = useState(false);
+  const [showNew, setShowNew] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,28 +51,58 @@ export function AdminSettings({ isOpen = true, onClose }) {
       <div className="max-w-xl w-full bg-neutral-900/90 border border-white/10 rounded-2xl p-6" onClick={e => e.stopPropagation()}>
         <h2 className="text-lg font-bold mb-3">管理员设置</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <input
-          type="password"
-          placeholder="当前密码"
-          value={currentPassword}
-          onChange={e => setCurrentPassword(e.target.value)}
-          className="pod-input w-full"
-        />
+        <div className="relative">
+          <input
+            type={showCurrent ? 'text' : 'password'}
+            placeholder="当前密码"
+            value={currentPassword}
+            onChange={e => setCurrentPassword(e.target.value)}
+            className="pod-input w-full pr-10"
+          />
+          <button
+            type="button"
+            onClick={() => setShowCurrent(v => !v)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white p-1"
+            aria-label="toggle password visibility"
+          >
+            {showCurrent ? <EyeOff size={16} /> : <Eye size={16} />}
+          </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <input
-            type="password"
-            placeholder="新的密码"
-            value={newPassword}
-            onChange={e => setNewPassword(e.target.value)}
-            className="pod-input w-full"
-          />
-          <input
-            type="password"
-            placeholder="确认新的密码"
-            value={confirmPassword}
-            onChange={e => setConfirmPassword(e.target.value)}
-            className="pod-input w-full"
-          />
+          <div className="relative">
+            <input
+              type={showNew ? 'text' : 'password'}
+              placeholder="新的密码"
+              value={newPassword}
+              onChange={e => setNewPassword(e.target.value)}
+              className="pod-input w-full pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowNew(v => !v)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white p-1"
+              aria-label="toggle password visibility"
+            >
+              {showNew ? <EyeOff size={16} /> : <Eye size={16} />}
+            </button>
+          </div>
+          <div className="relative">
+            <input
+              type={showConfirm ? 'text' : 'password'}
+              placeholder="确认新的密码"
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
+              className="pod-input w-full pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirm(v => !v)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white p-1"
+              aria-label="toggle password visibility"
+            >
+              {showConfirm ? <EyeOff size={16} /> : <Eye size={16} />}
+            </button>
+          </div>
         </div>
         <input
           type="text"

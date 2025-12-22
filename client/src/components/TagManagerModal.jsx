@@ -123,9 +123,21 @@ export function TagManagerModal({ isOpen, onClose, lang, onSuccess }) {
     setSelectedTags(newSet);
   };
 
-  const filteredTags = tags.filter(tag => 
-    tag.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredTags = tags
+    .filter(tag => tag.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a, b) => {
+      const ai = pinnedTags.indexOf(a.name);
+      const bi = pinnedTags.indexOf(b.name);
+      const aPinned = ai !== -1;
+      const bPinned = bi !== -1;
+      if (aPinned && bPinned) {
+        return ai - bi || b.count - a.count || a.name.localeCompare(b.name);
+      }
+      if (aPinned !== bPinned) {
+        return aPinned ? -1 : 1;
+      }
+      return b.count - a.count || a.name.localeCompare(b.name);
+    });
 
   if (!isOpen) return null;
 
