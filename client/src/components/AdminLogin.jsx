@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 import api, { setAuthToken } from '../lib/api';
 import { cn } from '../lib/utils';
 
@@ -7,6 +8,7 @@ export function AdminLogin({ isOpen = true, onClose, onSuccess }) {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -41,13 +43,23 @@ export function AdminLogin({ isOpen = true, onClose, onSuccess }) {
           onChange={(e) => setUsername(e.target.value)}
           className="pod-input w-full"
         />
-        <input
-          type="password"
-          placeholder="密码"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="pod-input w-full"
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            placeholder="密码"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="pod-input w-full pr-10"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(v => !v)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-white p-1"
+            aria-label="toggle password visibility"
+          >
+            {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+          </button>
+        </div>
         {error && <div className="text-red-400 text-sm">{error}</div>}
         <div className="flex items-center gap-2 mt-2">
           <button

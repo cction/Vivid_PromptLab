@@ -166,9 +166,7 @@ app.get('/api/presets', (req, res) => {
     const pageSize = parseInt(req.query.pageSize, 10);
     const usePagination = Number.isInteger(page) && page > 0 && Number.isInteger(pageSize) && pageSize > 0;
 
-    if (!usePagination) {
-      return res.json(presets);
-    }
+    const sortMode = typeof req.query.sortMode === 'string' ? req.query.sortMode : null;
 
     let filteredPresets = presets;
     const category = req.query.category;
@@ -188,6 +186,42 @@ app.get('/api/presets', (req, res) => {
         const promptZh = (preset.promptZh || '').toLowerCase();
         return title.includes(keyword) || promptEn.includes(keyword) || promptZh.includes(keyword);
       });
+    }
+
+    const byDateDesc = (a, b) => {
+      const da = a.createdAt ? new Date(a.createdAt).getTime() : (Number(a.id) || 0);
+      const db = b.createdAt ? new Date(b.createdAt).getTime() : (Number(b.id) || 0);
+      return db - da;
+    };
+
+    if (sortMode === 'latest') {
+      filteredPresets = filteredPresets.slice().sort(byDateDesc);
+    } else if (sortMode === 'pinned_first') {
+      const settings = readSettings();
+      const pinnedTags = Array.isArray(settings.pinnedTags) ? settings.pinnedTags : [];
+      if (pinnedTags.length > 0) {
+        const seen = new Set();
+        const pinnedOrdered = [];
+        pinnedTags.forEach(tag => {
+          const group = filteredPresets
+            .filter(p => !seen.has(p.id) && Array.isArray(p.categories) && p.categories.includes(tag))
+            .sort(byDateDesc);
+          group.forEach(p => {
+            seen.add(p.id);
+            pinnedOrdered.push(p);
+          });
+        });
+        const remaining = filteredPresets
+          .filter(p => !seen.has(p.id))
+          .sort(byDateDesc);
+        filteredPresets = [...pinnedOrdered, ...remaining];
+      } else {
+        filteredPresets = filteredPresets.slice().sort(byDateDesc);
+      }
+    }
+
+    if (!usePagination) {
+      return res.json(filteredPresets);
     }
 
     const startIndex = (page - 1) * pageSize;

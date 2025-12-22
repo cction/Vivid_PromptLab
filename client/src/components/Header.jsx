@@ -27,9 +27,10 @@ export function Header({
 
   return (
     <div className="flex flex-col gap-0">
-      {/* Top Bar - Floating Glass Effect */}
+      {/* Combined Header + Filters */}
       <div className="fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto bg-base-dark/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 animate-in fade-in slide-in-from-top-4 duration-500">
+        <div className="max-w-7xl mx-auto bg-base-dark/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-500">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         
         {/* Logo Section - Enhanced */}
         <div className="flex items-center gap-6 group">
@@ -92,21 +93,21 @@ export function Header({
               </button>
             )}
 
-          <button 
-            onClick={() => {
-              const path = typeof window !== 'undefined' ? (window.location.pathname || '/') : '/';
-              if (!path.startsWith('/admin')) {
-                // 首页或普通页面：始终先验证
-                if (onOpenAdminAuth) onOpenAdminAuth();
-              } else {
-                // 管理页内：打开设置
-                if (onOpenAdminSettings) onOpenAdminSettings();
-              }
-            }}
-            className="group flex items-center gap-2 px-4 py-2 bg-black/20 text-neutral-300 rounded-full text-sm hover:bg-black/40 transition-all border border-white/5"
-          >
-            管理
-          </button>
+          {!(typeof window !== 'undefined' && (window.location.pathname || '/').startsWith('/admin')) && (
+            <button 
+              onClick={() => {
+                const path = typeof window !== 'undefined' ? (window.location.pathname || '/') : '/';
+                if (!path.startsWith('/admin')) {
+                  if (onOpenAdminAuth) onOpenAdminAuth();
+                } else {
+                  if (onOpenAdminSettings) onOpenAdminSettings();
+                }
+              }}
+              className="group flex items-center gap-2 px-4 py-2 bg-black/20 text-neutral-300 rounded-full text-sm hover:bg-black/40 transition-all border border-white/5"
+            >
+              管理
+            </button>
+          )}
 
           {canEdit && (
             <button
@@ -127,12 +128,8 @@ export function Header({
             </button>
           )}
         </div>
-        </div>
-      </div>
-
-      {/* Filter Bar - Clean Layout */}
-      <div className="fixed top-24 left-0 right-0 z-40">
-        <div className="max-w-7xl mx-auto bg-base-dark/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-4">
+          </div>
+          <div className="border-t border-white/10 my-2"></div>
           <div className="flex flex-col md:flex-row gap-6 items-center">
           {/* Search Input - Minimalist */}
           <div className="relative w-full md:w-96 group">
