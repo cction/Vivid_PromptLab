@@ -121,34 +121,28 @@ export function PresetCard({ preset, lang, onDelete, onClick, canEdit = false })
         </div>
 
         {/* Action Bar */}
-        <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/5">
-          <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-widest">
-            {t.langLabel}
-          </span>
-          
-          <div className="flex gap-2">
-            <button
-              onClick={handleCopy}
-              className={cn(
-                "flex items-center gap-1 px-2 py-1 rounded text-[10px] font-medium transition-all duration-300",
-                copied 
-                  ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/20" 
-                  : "bg-white/5 text-neutral-400 border border-transparent hover:bg-white/10 hover:text-white hover:border-white/10"
-              )}
-            >
-              {copied ? (
-                <>
-                  <Check size={12} />
-                  <span>{t.copied}</span>
-                </>
-              ) : (
-                <>
-                  <Copy size={12} />
-                  <span>{t.copy}</span>
-                </>
-              )}
-            </button>
-          </div>
+        <div className="mt-2 pt-2 border-t border-white/5">
+          <button
+            onClick={handleCopy}
+            className={cn(
+              "w-full flex items-center justify-center gap-1 py-2 rounded text-[10px] font-medium transition-all duration-300",
+              copied 
+                ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/20" 
+                : "bg-white/5 text-neutral-400 border border-transparent hover:bg-white/10 hover:text-white hover:border-white/10"
+            )}
+          >
+            {copied ? (
+              <>
+                <Check size={12} />
+                <span>{t.copied}</span>
+              </>
+            ) : (
+              <>
+                <Copy size={12} />
+                <span>{t.copy}</span>
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>

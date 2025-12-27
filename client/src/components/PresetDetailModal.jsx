@@ -367,7 +367,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess, ca
                     <button
                       onClick={() => handleCopy(prompts.en, 'en')}
                       className={cn(
-                        "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-300",
+                        "flex items-center gap-1.5 px-[4.5rem] py-1.5 rounded-md text-xs font-medium transition-all duration-300",
                         copiedEn 
                           ? "bg-emerald-500/20 text-emerald-400" 
                           : "bg-white/10 text-neutral-400 hover:bg-white/20 hover:text-white"
@@ -408,7 +408,7 @@ export function PresetDetailModal({ isOpen, onClose, preset, lang, onSuccess, ca
                       onClick={() => handleCopy(prompts.zh, 'zh')}
                       disabled={!prompts.zh}
                       className={cn(
-                        "flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-300",
+                        "flex items-center gap-1.5 px-[4.5rem] py-1.5 rounded-md text-xs font-medium transition-all duration-300",
                         copiedZh 
                           ? "bg-emerald-500/20 text-emerald-400" 
                           : "bg-white/10 text-neutral-400 hover:bg-white/20 hover:text-white"

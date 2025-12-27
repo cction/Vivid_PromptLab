@@ -46,6 +46,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [showAdminSettings, setShowAdminSettings] = useState(false);
   const [showAdminAuth, setShowAdminAuth] = useState(false);
+  const [isTagExpanded, setIsTagExpanded] = useState(false);
 
   const t = translations[lang].app;
 
@@ -254,8 +255,9 @@ function App() {
           isAdmin={isAdmin}
           onOpenAdminSettings={() => setShowAdminSettings(true)}
           onOpenAdminAuth={() => setShowAdminAuth(true)}
+          onTagExpandedChange={setIsTagExpanded}
         />
-        <div className="h-48 md:h-56" />
+        <div className={isTagExpanded ? "h-64 md:h-72" : "h-40 md:h-44"} />
         <AdminLogin
           isOpen={showAdminAuth}
           onClose={() => setShowAdminAuth(false)}

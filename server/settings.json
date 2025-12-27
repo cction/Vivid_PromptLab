@@ -2,5 +2,10 @@
   "pinnedTags": [
     "建筑设计"
   ],
-  "customTags": []
+  "customTags": [],
+  "admin": {
+    "username": "admin",
+    "hash": "f9df654b375d2a41d0b00a3f8a419692154fd2a2d2965606b64ef66a135004fb",
+    "salt": "cf695b9edbe4c158ee4cd7ed9985e280"
+  }
 }
