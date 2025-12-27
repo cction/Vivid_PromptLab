@@ -10,6 +10,8 @@ export const translations = {
       noPrompts: "No prompts found",
       noPromptsDesc: "Try adjusting your search or category filters to find what you're looking for.",
       createFirst: "Create First Prompt",
+      expandTags: "Show more tags",
+      collapseTags: "Show fewer tags",
     },
     card: {
       noPreview: "No Preview",
@@ -81,6 +83,8 @@ export const translations = {
       noPrompts: "未找到提示词",
       noPromptsDesc: "尝试调整搜索关键词或分类筛选。",
       createFirst: "创建第一个提示词",
+      expandTags: "展开标签",
+      collapseTags: "收起标签",
     },
     card: {
       noPreview: "暂无预览",

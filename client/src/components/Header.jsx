@@ -20,10 +20,37 @@ export function Header({
   sortByNewest,
   setSortByNewest,
   canEdit = false,
-  isAdmin = false
+  isAdmin = false,
+  onTagExpandedChange,
 }) {
   const t = translations[lang].app;
   const categoryLabels = translations[lang].categories || {};
+  const [isTagExpanded, setIsTagExpanded] = React.useState(false);
+  const [hasTagOverflow, setHasTagOverflow] = React.useState(false);
+  const tagsContainerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const el = tagsContainerRef.current;
+    if (!el) return;
+    const checkOverflow = () => {
+      setHasTagOverflow(el.scrollHeight > el.clientHeight);
+    };
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
+    return () => {
+      window.removeEventListener('resize', checkOverflow);
+    };
+  }, [categories.length, lang]);
+
+  const handleToggleTagExpand = () => {
+    setIsTagExpanded(prev => {
+      const next = !prev;
+      if (typeof onTagExpandedChange === 'function') {
+        onTagExpandedChange(next);
+      }
+      return next;
+    });
+  };
 
   return (
     <div className="flex flex-col gap-0">
@@ -149,8 +176,14 @@ export function Header({
           </div>
 
             {/* Categories - Wrapping Tags */}
-            <div className="flex-1 w-full">
-              <div className="flex flex-wrap gap-2">
+            <div className="flex-1 w-full flex items-center gap-2">
+              <div
+                ref={tagsContainerRef}
+                className={cn(
+                  "flex flex-wrap gap-2 overflow-hidden",
+                  isTagExpanded ? "max-h-[999px]" : "max-h-11"
+                )}
+              >
               <button
                 onClick={() => {
                   setSelectedCategory('All');
@@ -208,6 +241,14 @@ export function Header({
                 </button>
               ))}
               </div>
+              {hasTagOverflow && (
+                <button
+                  onClick={handleToggleTagExpand}
+                  className="px-3 py-1.5 rounded-full text-[11px] font-medium border border-white/10 text-neutral-400 hover:text-white hover:border-white/40 bg-black/30 whitespace-nowrap"
+                >
+                  {isTagExpanded ? (t.collapseTags || '收起') : (t.expandTags || '展开')}
+                </button>
+              )}
             </div>
           </div>
         </div>
