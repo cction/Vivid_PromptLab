@@ -66,7 +66,7 @@ mv Vivid_PromptLab-main Vivid_PromptLab
 ### 2. 启动服务
 
 ```bash
-cd Vivid_PromptLab
+cd /home/prompt/Vivid_PromptLab
 
 # 构建并启动
 docker compose up -d --build
